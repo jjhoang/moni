@@ -61,13 +61,20 @@ class LiveScreen: UIViewController {
     
     @IBAction func gotIt(_ sender: Any) { //got it button
     
-     
+    
+        if shuffledArray.isEmpty == false {
+            
+            shuffledArray.removeFirst()
+            word.text = shuffledArray.first
+        } //else  return to first screen
     
 }
     
     @IBAction func skip(_ sender: Any) {//skip button
     
-    
+        if shuffledArray.count > 2  {
+            
+        }
 }
     
     
