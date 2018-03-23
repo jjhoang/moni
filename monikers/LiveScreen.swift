@@ -52,7 +52,11 @@ class LiveScreen: UIViewController {
         buttonTappedLabel.isHidden = true
         word.isHidden = false
         print(shuffledArray)
-        print("the first word is \(shuffledArray.prefix(0))")
+        if shuffledArray.isEmpty == false {
+            
+            word.text = shuffledArray.first //displays the first word
+        }
+
     }
     
     @IBAction func gotIt(_ sender: Any) { //got it button
