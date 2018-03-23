@@ -53,12 +53,18 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                 <state key="normal" title="GOT IT!"/>
+                                <connections>
+                                    <action selector="gotIt:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fWR-DB-2Q8"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GPv-GL-UbS">
                                 <rect key="frame" x="227" y="446" width="117" height="52"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="33"/>
                                 <state key="normal" title="SKIP"/>
+                                <connections>
+                                    <action selector="skip:" destination="BYZ-38-t0r" eventType="touchUpInside" id="UKF-qZ-xWD"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="WORD" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XiC-8K-Nou">
                                 <rect key="frame" x="16" y="170" width="343" height="136"/>
