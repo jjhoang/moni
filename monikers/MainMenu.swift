@@ -41,8 +41,9 @@ class MainMenu: UIViewController, UITextFieldDelegate {
         view.endEditing(true)
     }
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool { //hides the keyboard
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool { //when user hits Done on keyboard
         textField.resignFirstResponder()
+        textField.text = ""
         return true
     }
     
