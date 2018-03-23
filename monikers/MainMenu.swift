@@ -3,7 +3,7 @@
 //  monikers
 //
 //  Created by Jason Hoang on 3/12/18.
-//  Copyright © 2018 Jason Hoang. All rights reserved. test test
+//  Copyright © 2018 Jason Hoang. All rights reserved. moo
 //
 
 import UIKit
