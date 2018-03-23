@@ -61,7 +61,7 @@ class MainMenu: UIViewController, UITextFieldDelegate {
    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? LiveScreen {
-            destination.liveScreenWords = addWords.text //might be incorreect
+            //destination.liveScreenWords = addWords.text //might be incorreect
            // destination.testMe = runningWords.joined(separator: " ") //pass array over DO MORE RESEARCH -- this displays everything
             destination.arrayTest = runningWords
         }
