@@ -3,7 +3,7 @@
 //  monikers
 //
 //  Created by Jason Hoang on 3/12/18.
-//  Copyright © 2018 Jason Hoang. All rights reserved. moo
+//  Copyright © 2018 Jason Hoang. All rights reserved.
 //
 
 import UIKit
@@ -41,8 +41,9 @@ class MainMenu: UIViewController, UITextFieldDelegate {
         view.endEditing(true)
     }
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool { //hides the keyboard
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool { //when user hits Done on keyboard
         textField.resignFirstResponder()
+        textField.text = ""
         return true
     }
     
@@ -51,7 +52,7 @@ class MainMenu: UIViewController, UITextFieldDelegate {
         wordCountLabel.text = String(numberOfWords)
         allWords.append(addWords.text!) //adds what the user inputs to allWords array
         runningWords.append(addWords.text!) //add what user inputs to runningWords (update actively)
-        print(shuffleArray(arrayToBeShuffled: runningWords))
+       // print(shuffleArray(arrayToBeShuffled: runningWords))
     }
     
     @IBAction func t1Start(_ sender: UIButton) {
@@ -59,29 +60,17 @@ class MainMenu: UIViewController, UITextFieldDelegate {
 }
     
    
-    func shuffleArray(arrayToBeShuffled array1: [String]) -> [String] { //shuffle the array function
-        var oldArray = array1
-        var newArray = [String]()
-        var randomNumber: Int
-        
-        for _ in array1 {
-        randomNumber = Int(arc4random_uniform(UInt32(oldArray.count - 1)))
-        newArray.append(oldArray[randomNumber])
-        oldArray.remove(at: randomNumber)
-    }
-        return newArray
-    }
-    
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? LiveScreen {
-            destination.liveScreenWords = addWords.text //might be incorreect
-            destination.testMe = runningWords.joined(separator: " ") //pass array over DO MORE RESEARCH -- this displays everything
+            //destination.liveScreenWords = addWords.text //might be incorreect
+           // destination.testMe = runningWords.joined(separator: " ") //pass array over DO MORE RESEARCH -- this displays everything
+            destination.arrayTest = runningWords
         }
     }
     
     
     @IBAction func t2Start(_ sender: UIButton) {
+
     }
     
 
