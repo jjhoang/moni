@@ -73,6 +73,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oFW-0V-6i6">
+                                <rect key="frame" x="22" y="546" width="58" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <segue destination="okr-N5-JAw" kind="show" identifier="goBackMainMenu" id="40R-OW-PSu"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -82,8 +89,10 @@
                     <connections>
                         <outlet property="buttonTappedLabel" destination="cvL-Eb-3cb" id="8pC-o9-9bN"/>
                         <outlet property="countDown" destination="220-DD-BKJ" id="Y4f-Ic-WUS"/>
+                        <outlet property="gotItLabel" destination="eeB-ZE-3nD" id="LNZ-f5-wOH"/>
+                        <outlet property="skipLabel" destination="GPv-GL-UbS" id="Bge-sP-O5m"/>
                         <outlet property="word" destination="XiC-8K-Nou" id="ddm-xT-jNq"/>
-                        <outlet property="wordsLeft" destination="Eaa-Pa-fY0" id="PEZ-yl-ptr"/>
+                        <outlet property="wordsLeft" destination="Eaa-Pa-fY0" id="Gx3-e0-JPe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -179,6 +188,14 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3K2-Ha-3kg">
+                                <rect key="frame" x="136" y="543" width="96" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="current words"/>
+                                <connections>
+                                    <action selector="currentWordsTest:" destination="okr-N5-JAw" eventType="touchUpInside" id="1JG-GU-eZk"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="Z4M-pX-Hji"/>
@@ -190,10 +207,17 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZOZ-E8-rVW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="256.80000000000001" y="73.313343328335833"/>
+            <point key="canvasLocation" x="-86" y="73"/>
+        </scene>
+        <!--Storyboard Reference-->
+        <scene sceneID="Tng-AJ-dyN">
+            <objects>
+                <viewControllerPlaceholder id="0So-Nd-TXz" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Caz-U1-Nor" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="PeI-aD-iw3"/>
+        <segue reference="b5c-hk-SDK"/>
     </inferredMetricsTieBreakers>
 </document>
