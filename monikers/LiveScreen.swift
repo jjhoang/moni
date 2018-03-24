@@ -17,6 +17,7 @@ class LiveScreen: UIViewController {
     var liveScreenWords: String?
     var arrayTest: [String] = [ ]
     var shuffledArray: [String] = [ ]
+    var arrayTracker = 0
   
  
     @IBOutlet weak var word: UILabel! //display the word
@@ -58,6 +59,14 @@ class LiveScreen: UIViewController {
         return newArray
     }
     
+    func nextElement() { //goes to the next element in the array of shuffledArray
+        arrayTracker = arrayTracker + 1
+        if arrayTracker >= shuffledArray.count {
+            arrayTracker = 0
+        }
+       word.text = shuffledArray[arrayTracker]
+    }
+    
     @IBAction func buttonTapped(_ sender: Any) { //start button
         
         skipLabel.isHidden = false
@@ -78,24 +87,29 @@ class LiveScreen: UIViewController {
     
     @IBAction func gotIt(_ sender: Any) { //got it button
         
-        if numberOfWords > 0 {
+        if numberOfWords > 0 { //track the amount of words left
             numberOfWords -= 1
             wordsLeft.text = String(numberOfWords)
-        
         }
+        
         if shuffledArray.isEmpty == false {
-            
-            shuffledArray.removeFirst()
-            word.text = shuffledArray.first
-        } //else  return to first screen
+           if shuffledArray[arrayTracker] == shuffledArray.last {
+                nextElement()
+                shuffledArray.removeLast()
+            } else {
+                nextElement()
+                shuffledArray.remove(at: arrayTracker - 1)
     
+            } //else  return to first screen
+    
+        }
+        
 }
     
-    @IBAction func skip(_ sender: Any) {//skip button
+
     
-        if shuffledArray.count > 2  {
-            
-        }
+    @IBAction func skip(_ sender: Any) {//skip button
+        nextElement()
 }
     
     
