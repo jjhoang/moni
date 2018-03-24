@@ -82,8 +82,10 @@
                     <connections>
                         <outlet property="buttonTappedLabel" destination="cvL-Eb-3cb" id="8pC-o9-9bN"/>
                         <outlet property="countDown" destination="220-DD-BKJ" id="Y4f-Ic-WUS"/>
+                        <outlet property="gotItLabel" destination="eeB-ZE-3nD" id="LNZ-f5-wOH"/>
+                        <outlet property="skipLabel" destination="GPv-GL-UbS" id="Bge-sP-O5m"/>
                         <outlet property="word" destination="XiC-8K-Nou" id="ddm-xT-jNq"/>
-                        <outlet property="wordsLeft" destination="Eaa-Pa-fY0" id="PEZ-yl-ptr"/>
+                        <outlet property="wordsLeft" destination="Eaa-Pa-fY0" id="Gx3-e0-JPe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
