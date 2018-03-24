@@ -8,9 +8,9 @@
 
 import UIKit
 
-class LiveScreen: UIViewController {
+class LiveScreen: UIViewController, UITextFieldDelegate{
 
-    var seconds = 60
+    var seconds = 10
     var numberOfWords = 0
    
     var timer = Timer()
@@ -80,10 +80,7 @@ class LiveScreen: UIViewController {
             
             word.text = shuffledArray.first //displays the first word
         }
-
-       // numberOfWords = 0
-       // wordsLeft.text = String(numberOfWords)
-    }
+}
     
     @IBAction func gotIt(_ sender: Any) { //got it button
         
@@ -91,17 +88,17 @@ class LiveScreen: UIViewController {
             numberOfWords -= 1
             wordsLeft.text = String(numberOfWords)
         }
-        
-        if shuffledArray.isEmpty == false {
+        if shuffledArray.count == 2 { //hides the skip when there is one word left
+            skipLabel.isHidden = true
+        }
+        if shuffledArray.isEmpty == false { //removes the current word and goes to the next one. Cycles through the whole deck
            if shuffledArray[arrayTracker] == shuffledArray.last {
                 nextElement()
                 shuffledArray.removeLast()
             } else {
                 nextElement()
                 shuffledArray.remove(at: arrayTracker - 1)
-    
-            } //else  return to first screen
-    
+            }
         }
         
 }
@@ -119,10 +116,23 @@ class LiveScreen: UIViewController {
         
         if (seconds == 0) {
             timer.invalidate()
+            arrayTest = shuffledArray
+            performSegue(withIdentifier: "goBackMainMenu", sender: self) //go back button is hidden from view 
+        
+    }
+}
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? MainMenu {
+            destination.runningWords = arrayTest
         }
     }
     
-
+  /*  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? LiveScreen {
+            destination.arrayTest = runningWords
+        }
+    }*/
     
     
 
