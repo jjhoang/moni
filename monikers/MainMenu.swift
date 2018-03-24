@@ -22,6 +22,7 @@ class MainMenu: UIViewController, UITextFieldDelegate {
     }
     var numberOfWords = 0
     var allWords: [String] = []
+    var teamTracker: Int = 1
     public var runningWords: [String] = []
    
     override func viewDidLoad() {
@@ -61,20 +62,21 @@ class MainMenu: UIViewController, UITextFieldDelegate {
     
     @IBAction func t1Start(_ sender: UIButton) {
     performSegue(withIdentifier: "t1Start", sender: self)
-}
+        
+    }
     
    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? LiveScreen {
             destination.arrayTest = runningWords
             destination.arrayTracker = 0
+            destination.teamTracker = teamTracker
+            
         }
     }
     
     
-    @IBAction func t2Start(_ sender: UIButton) {
 
-    }
     
 
 

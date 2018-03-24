@@ -163,24 +163,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gGv-uV-RLF">
-                                <rect key="frame" x="45" y="435" width="74" height="86"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="T1 START"/>
-                                <connections>
-                                    <action selector="t1Start:" destination="okr-N5-JAw" eventType="touchUpInside" id="nd5-mJ-qku"/>
-                                    <segue destination="BYZ-38-t0r" kind="show" identifier="t1Start" id="PeI-aD-iw3"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jga-Rs-wuc">
-                                <rect key="frame" x="234" y="435" width="74" height="86"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="T2 START"/>
-                                <connections>
-                                    <action selector="t2Start:" destination="okr-N5-JAw" eventType="touchUpInside" id="d4Q-94-Wgb"/>
-                                    <segue destination="BYZ-38-t0r" kind="show" identifier="t2Start" id="b5c-hk-SDK"/>
-                                </connections>
-                            </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="olP-Cp-u9s">
                                 <rect key="frame" x="16" y="32" width="337" height="38"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -196,6 +178,18 @@
                                     <action selector="currentWordsTest:" destination="okr-N5-JAw" eventType="touchUpInside" id="1JG-GU-eZk"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gGv-uV-RLF">
+                                <rect key="frame" x="118" y="428" width="139" height="86"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" title="START">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="t1Start:" destination="okr-N5-JAw" eventType="touchUpInside" id="nd5-mJ-qku"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="t1Start" id="PeI-aD-iw3"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="Z4M-pX-Hji"/>
@@ -207,7 +201,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZOZ-E8-rVW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-86" y="73"/>
+            <point key="canvasLocation" x="-87.200000000000003" y="72.413793103448285"/>
         </scene>
         <!--Storyboard Reference-->
         <scene sceneID="Tng-AJ-dyN">
@@ -217,7 +211,4 @@
             </objects>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="b5c-hk-SDK"/>
-    </inferredMetricsTieBreakers>
 </document>

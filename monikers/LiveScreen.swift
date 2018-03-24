@@ -12,12 +12,14 @@ class LiveScreen: UIViewController, UITextFieldDelegate{
 
     var seconds = 10
     var numberOfWords = 0
+    
    
     var timer = Timer()
     var liveScreenWords: String?
     var arrayTest: [String] = [ ]
     var shuffledArray: [String] = [ ]
     var arrayTracker = 0
+    var teamTracker = 1
   
  
     @IBOutlet weak var word: UILabel! //display the word
@@ -25,12 +27,13 @@ class LiveScreen: UIViewController, UITextFieldDelegate{
     @IBOutlet weak var buttonTappedLabel: UIButton! //enter label
     @IBOutlet weak var wordsLeft: UILabel! //words left in the deck
     @IBOutlet weak var gotItLabel: UIButton!
-    @IBOutlet weak var skipLabel: UIButton!
+    @IBOutlet weak var skipLabel: UIButton! //cycle through words
     
    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         if let nameToDisplay = liveScreenWords {
             word.text = nameToDisplay
         }
@@ -44,6 +47,20 @@ class LiveScreen: UIViewController, UITextFieldDelegate{
         wordsLeft.text = String(numberOfWords)
         skipLabel.isHidden = true
         gotItLabel.isHidden = true
+        
+        if teamTracker == 1 {
+            view.backgroundColor = .red
+        } else {
+            view.backgroundColor = .blue
+        }
+    }
+    
+     func viewWillAppear() {
+        if teamTracker == 1 {
+            view.backgroundColor = .red
+        } else {
+            view.backgroundColor = .blue
+        }
     }
     
     func shuffleArray(arrayToBeShuffled array1: [String]) -> [String] { //shuffle the array function
@@ -66,6 +83,15 @@ class LiveScreen: UIViewController, UITextFieldDelegate{
         }
        word.text = shuffledArray[arrayTracker]
     }
+    
+    func switchTeam() {
+        if teamTracker == 1 {
+            teamTracker = 2
+        } else {
+            teamTracker = 1}
+    }
+    
+    
     
     @IBAction func buttonTapped(_ sender: Any) { //start button
         
@@ -103,8 +129,6 @@ class LiveScreen: UIViewController, UITextFieldDelegate{
         
 }
     
-
-    
     @IBAction func skip(_ sender: Any) {//skip button
         nextElement()
 }
@@ -117,23 +141,18 @@ class LiveScreen: UIViewController, UITextFieldDelegate{
         if (seconds == 0) {
             timer.invalidate()
             arrayTest = shuffledArray
-            performSegue(withIdentifier: "goBackMainMenu", sender: self) //go back button is hidden from view 
-        
+            switchTeam()
+            performSegue(withIdentifier: "goBackMainMenu", sender: self) //go back button is hidden from view
+         
     }
 }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? MainMenu {
             destination.runningWords = arrayTest
+            destination.teamTracker = teamTracker
         }
     }
-    
-  /*  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destination = segue.destination as? LiveScreen {
-            destination.arrayTest = runningWords
-        }
-    }*/
-    
     
 
     override func didReceiveMemoryWarning() {
