@@ -10,7 +10,7 @@ import UIKit
 
 class LiveScreen: UIViewController, UITextFieldDelegate{
 
-    var seconds = 10
+    var seconds = 5
     var numberOfWords = 0
     
    
@@ -20,6 +20,7 @@ class LiveScreen: UIViewController, UITextFieldDelegate{
     var shuffledArray: [String] = [ ]
     var arrayTracker = 0 //the amount of words 
     var teamTracker = 1
+    var roundTracker = 1
     var scoreUpdate = 0
     var team3 = 0
     var team4 = 0
@@ -126,6 +127,7 @@ class LiveScreen: UIViewController, UITextFieldDelegate{
         }
         if numberOfWords == 0 { //when all words are done then go to main menu
             shuffledArray = []
+            roundTracker += 1
             endTurn()
         }
         if shuffledArray.count == 2 { //hides the skip when there is one word left
@@ -148,6 +150,7 @@ class LiveScreen: UIViewController, UITextFieldDelegate{
 }
     
     @IBAction func skip(_ sender: Any) {//skip button
+        print("current round is \(roundTracker)")
         nextElement()
 }
     
@@ -176,7 +179,7 @@ class LiveScreen: UIViewController, UITextFieldDelegate{
             destination.team1 = team3
             destination.team2 = team4
             destination.started = started
-            
+            destination.roundTracker = roundTracker
         }
     }
     

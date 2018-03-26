@@ -18,24 +18,27 @@ class MainMenu: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var redScore: UILabel!
     @IBOutlet weak var blueScore: UILabel!
     @IBOutlet weak var round: UILabel!
+    @IBOutlet weak var wordsLeft: UILabel!
     
     
     
     @IBAction func currentWordsTest(_ sender: Any) {
     print("There are \(runningWords)")
-    print("total words are \(allWords)")
-        print("saved array is \(savedArray)")
+    print("total words are \(originalWords)")
+    print("saved array is \(wordsForNewRound)")
+    print("round is currently \(roundTracker)")
     }
     
     var save = UserDefaults.standard
-    var savedArray: [String] = []
+    var wordsForNewRound: [String] = []
     var numberOfWords = 0
-    var allWords: [String] = []
+    var originalWords: [String] = [] //temp store words
     var teamTracker: Int = 1
     var team1 = 0
     var team2 = 0
     var runningScore = 0
-    var started = false 
+    var started = false
+    var roundTracker = 1
     public var runningWords: [String] = []
     
    
@@ -55,7 +58,11 @@ class MainMenu: UIViewController, UITextFieldDelegate {
     } else {
       round.isHidden = true
     }
-     savedArray = save.stringArray(forKey: "allWords") ?? [String]()
+     wordsForNewRound = save.stringArray(forKey: "originalWords") ?? [String]()
+     newRoundStart()
+    wordsLeft.text = String(runningWords.count) //shows # remaining words
+    
+
 }
     
     
@@ -83,12 +90,12 @@ class MainMenu: UIViewController, UITextFieldDelegate {
         
         if teamTracker == 1 {
             team2 = runningScore + team2
-            UserDefaults.standard.set(team2, forKey: "team2")
+            save.set(team2, forKey: "team2")
             blueScore.text = String(team2)
             redScore.text = String(team1)
         } else {
             team1 = runningScore + team1
-            UserDefaults.standard.set(team1, forKey: "team1")
+            save.set(team1, forKey: "team1")
             redScore.text = String(team1)
             blueScore.text = String(team2)
         }
@@ -98,14 +105,26 @@ class MainMenu: UIViewController, UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         numberOfWords += 1 //updates the counter
         wordCountLabel.text = String(numberOfWords)
-        allWords.append(addWords.text!) //adds what the user inputs to allWords array
+        originalWords.append(addWords.text!) //adds what the user inputs to originalWords array
         runningWords.append(addWords.text!) //add what user inputs to runningWords (update actively)
-        save.set(allWords, forKey: "allWords" )
+        save.set(originalWords, forKey: "originalWords" )
     }
 
     func newRoundStart() {
-        
-      
+        if roundTracker == 2 {
+            round.text = "Round 2: One Word"
+        } else if roundTracker == 3 {
+             round.text = "Round 3: Charades"
+        }
+        if runningWords.count == 0 && wordsForNewRound.count > 1 {
+            if roundTracker == 2 {
+                round.text = "Round 2: One Word"
+                runningWords = wordsForNewRound
+            } else if roundTracker == 3 {
+                round.text = "Round 3: Charades"
+                runningWords = wordsForNewRound
+            }
+        }
       
     }
     
@@ -127,6 +146,7 @@ class MainMenu: UIViewController, UITextFieldDelegate {
             destination.teamTracker = teamTracker
             destination.team3 = team1
             destination.team4 = team2
+            destination.roundTracker = roundTracker
             
         }
     }
