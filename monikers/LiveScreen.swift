@@ -135,12 +135,15 @@ class LiveScreen: UIViewController, UITextFieldDelegate{
                arrayTracker = 0
                 shuffledArray.removeLast()
                 word.text = shuffledArray[arrayTracker]
+              } else if shuffledArray.count == 2 && word.text == shuffledArray.first {
+                shuffledArray.removeFirst()
+                arrayTracker = 0
+                word.text = shuffledArray[arrayTracker]
             } else {
                 nextElement()
                 shuffledArray.remove(at: arrayTracker - 1)  //may need to update
             }
-       }
-        
+        }
 }
     
     @IBAction func skip(_ sender: Any) {//skip button

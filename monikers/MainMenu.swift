@@ -35,8 +35,8 @@ class MainMenu: UIViewController, UITextFieldDelegate {
     var team1 = 0
     var team2 = 0
     var runningScore = 0
+    var started = false
     public var runningWords: [String] = []
-    let defaults = UserDefaults.standard
     
    
     override func viewDidLoad() {
@@ -49,6 +49,14 @@ class MainMenu: UIViewController, UITextFieldDelegate {
     
    override func viewWillAppear(_ animated: Bool) {
         scoreUpdate()
+    print("ViewWillAppear is called")
+   
+    
+    if started == true {
+        addWords.isHidden = true
+        wordCountLabel.isHidden = true
+        wordCountWord.isHidden = true
+    }
     }
     
     
@@ -97,19 +105,14 @@ class MainMenu: UIViewController, UITextFieldDelegate {
 
     func newRoundStart() {
         
-        addWords.isHidden = true
-        wordCountLabel.isHidden = true
-        wordCountWord.isHidden = true
-        
-        UserDefaults.standard.bool(forKey: "addWords")
-        UserDefaults.standard.bool(forKey: "wordCountLabel")
-        UserDefaults.standard.bool(forKey: "wordCountWord")
-        
+      
       
     }
     
     func newGame() {
-        
+        started = true
+        UserDefaults.standard.set(true, forKey: "started")
+        print("new game beign called")
    
     }
     
@@ -118,7 +121,7 @@ class MainMenu: UIViewController, UITextFieldDelegate {
     @IBAction func t1Start(_ sender: Any) {
          newRoundStart()
          performSegue(withIdentifier: "t1Start", sender: self)
-        
+
 
     }
     
