@@ -55,7 +55,7 @@ class LiveScreen: UIViewController, UITextFieldDelegate{
         if teamTracker == 1 {
             view.backgroundColor = .red
         } else {
-            view.backgroundColor = .blue
+            view.backgroundColor = .blue 
         }
         
     
