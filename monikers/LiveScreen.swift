@@ -23,6 +23,7 @@ class LiveScreen: UIViewController, UITextFieldDelegate{
     var scoreUpdate = 0
     var team3 = 0
     var team4 = 0
+    var started = true
   
  
     @IBOutlet weak var word: UILabel! //display the word
@@ -174,6 +175,7 @@ class LiveScreen: UIViewController, UITextFieldDelegate{
             destination.runningScore = scoreUpdate
             destination.team1 = team3
             destination.team2 = team4
+            destination.started = started
             
         }
     }
