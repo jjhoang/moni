@@ -13,22 +13,58 @@ class MainMenu: UIViewController, UITextFieldDelegate {
     
     
     @IBOutlet weak var addWords: UITextField!
+    @IBOutlet weak var wordCountWord: UILabel!
     @IBOutlet weak var wordCountLabel: UILabel!
-   
+    @IBOutlet weak var redScore: UILabel!
+    @IBOutlet weak var blueScore: UILabel!
+    @IBOutlet weak var round: UILabel!
+    @IBOutlet weak var wordsLeft: UILabel!
+    
+    
     
     @IBAction func currentWordsTest(_ sender: Any) {
-        
     print("There are \(runningWords)")
+    print("total words are \(originalWords)")
+    print("saved array is \(wordsForNewRound)")
+    print("round is currently \(roundTracker)")
     }
+    
+    var save = UserDefaults.standard
+    var wordsForNewRound: [String] = []
     var numberOfWords = 0
-    var allWords: [String] = []
+    var originalWords: [String] = [] //temp store words
+    var teamTracker: Int = 1
+    var team1 = 0
+    var team2 = 0
+    var runningScore = 0
+    var started = false
+    var roundTracker = 1
     public var runningWords: [String] = []
+    
    
     override func viewDidLoad() {
-        super.viewDidLoad()
         configureTextFields()
         configureTapGesture()
+    
     }
+    
+   override func viewWillAppear(_ animated: Bool) {
+        scoreUpdate()
+    if started == true {
+        addWords.isHidden = true
+        wordCountLabel.isHidden = true
+        wordCountWord.isHidden = true
+        round.isHidden = false
+    } else {
+      round.isHidden = true
+    }
+     wordsForNewRound = save.stringArray(forKey: "originalWords") ?? [String]()
+     newRoundStart()
+    wordsLeft.text = String(runningWords.count) //shows # remaining words
+    
+
+}
+    
     
     
     private func configureTextFields(){
@@ -41,7 +77,6 @@ class MainMenu: UIViewController, UITextFieldDelegate {
     }
     
     @objc func handleTap() { //hides the keyboard when touching outside part 2
-        print("Handle tap was called")
         view.endEditing(true)
     }
     
@@ -51,33 +86,71 @@ class MainMenu: UIViewController, UITextFieldDelegate {
         return true
     }
     
+    func scoreUpdate() {
+        
+        if teamTracker == 1 {
+            team2 = runningScore + team2
+            save.set(team2, forKey: "team2")
+            blueScore.text = String(team2)
+            redScore.text = String(team1)
+        } else {
+            team1 = runningScore + team1
+            save.set(team1, forKey: "team1")
+            redScore.text = String(team1)
+            blueScore.text = String(team2)
+        }
+       
+    }
+    
     func textFieldDidEndEditing(_ textField: UITextField) {
         numberOfWords += 1 //updates the counter
         wordCountLabel.text = String(numberOfWords)
-        allWords.append(addWords.text!) //adds what the user inputs to allWords array
+        originalWords.append(addWords.text!) //adds what the user inputs to originalWords array
         runningWords.append(addWords.text!) //add what user inputs to runningWords (update actively)
-       // print(shuffleArray(arrayToBeShuffled: runningWords))
+        save.set(originalWords, forKey: "originalWords" )
+    }
+
+    func newRoundStart() {
+        if roundTracker == 2 {
+            round.text = "Round 2: One Word"
+        } else if roundTracker == 3 {
+             round.text = "Round 3: Charades"
+        }
+        if runningWords.count == 0 && wordsForNewRound.count > 1 {
+            if roundTracker == 2 {
+                round.text = "Round 2: One Word"
+                runningWords = wordsForNewRound
+            } else if roundTracker == 3 {
+                round.text = "Round 3: Charades"
+                runningWords = wordsForNewRound
+            }
+        }
+      
     }
     
-    @IBAction func t1Start(_ sender: UIButton) {
-    performSegue(withIdentifier: "t1Start", sender: self)
-}
-    
+    func newGame() {
+        
    
+    }
+    
+
+    
+    @IBAction func t1Start(_ sender: Any) {
+         performSegue(withIdentifier: "t1Start", sender: self)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? LiveScreen {
             destination.arrayTest = runningWords
             destination.arrayTracker = 0
+            destination.teamTracker = teamTracker
+            destination.team3 = team1
+            destination.team4 = team2
+            destination.roundTracker = roundTracker
+            
         }
     }
     
-    
-    @IBAction func t2Start(_ sender: UIButton) {
-
-    }
-    
-
-
 }
 
 
