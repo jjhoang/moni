@@ -133,20 +133,40 @@ class LiveScreen: UIViewController, UITextFieldDelegate{
         if shuffledArray.count == 2 { //hides the skip when there is one word left
             skipLabel.isHidden = true
         }
+        
         if shuffledArray.count > 1 { //removes the current word and goes to the next one. Cycles through the whole deck
+            if let index = shuffledArray.index(of: word.text!) { //TESTING
+                shuffledArray.remove(at: index)
+                print("WORKING")
+                nextElement()
+            }
+        }
+ 
+            
+      /*  if shuffledArray.count > 1 { //removes the current word and goes to the next one. Cycles through the whole deck //old way
               if word.text == shuffledArray.last {
                arrayTracker = 0
                 shuffledArray.removeLast()
                 word.text = shuffledArray[arrayTracker]
               } else if shuffledArray.count == 2 && word.text == shuffledArray.first {
-                shuffledArray.removeFirst()
+                //shuffledArray.removeFirst()
                 arrayTracker = 0
+                
+                if let index = shuffledArray.index(of: word.text!) { //TESTING
+                    shuffledArray.remove(at: index)
+                    print("THIS WORKED!")
+                    }
                 word.text = shuffledArray[arrayTracker]
             } else {
+                if let index = shuffledArray.index(of: word.text!) { //TESTING
+                    shuffledArray.remove(at: index)
+                    print("THIS WORKED!")
+                }
                 nextElement()
-                shuffledArray.remove(at: arrayTracker - 1)  //may need to update
+                //shuffledArray.remove(at: arrayTracker - 1)  //may need to update
+                
             }
-        }
+        }*/
 }
     
     @IBAction func skip(_ sender: Any) {//skip button
