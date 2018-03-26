@@ -19,7 +19,7 @@ class MainMenu: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var blueScore: UILabel!
     @IBOutlet weak var round: UILabel!
     @IBOutlet weak var wordsLeft: UILabel!
-    
+    @IBOutlet weak var startButtonLabel: UIButton!
     
     
     @IBAction func currentWordsTest(_ sender: Any) {
@@ -58,7 +58,7 @@ class MainMenu: UIViewController, UITextFieldDelegate {
     } else {
       round.isHidden = true
     }
-     wordsForNewRound = save.stringArray(forKey: "originalWords") ?? [String]()
+     wordsForNewRound = save.stringArray(forKey: "originalWords") ?? [String]() //loads words with the saved array
      newRoundStart()
     wordsLeft.text = String(runningWords.count) //shows # remaining words
     
@@ -123,6 +123,10 @@ class MainMenu: UIViewController, UITextFieldDelegate {
             } else if roundTracker == 3 {
                 round.text = "Round 3: Charades"
                 runningWords = wordsForNewRound
+            } else if roundTracker == 4 { //game over
+                round.text = "GAME OVER"
+                wordsForNewRound = []
+                startButtonLabel.isHidden = true
             }
         }
       

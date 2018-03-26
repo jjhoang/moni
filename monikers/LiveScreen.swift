@@ -10,7 +10,7 @@ import UIKit
 
 class LiveScreen: UIViewController, UITextFieldDelegate{
 
-    var seconds = 5
+    var seconds = 60
     var numberOfWords = 0
     
    
