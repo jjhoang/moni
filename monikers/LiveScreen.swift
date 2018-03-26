@@ -18,8 +18,11 @@ class LiveScreen: UIViewController, UITextFieldDelegate{
     var liveScreenWords: String?
     var arrayTest: [String] = [ ]
     var shuffledArray: [String] = [ ]
-    var arrayTracker = 0
+    var arrayTracker = 0 //the amount of words 
     var teamTracker = 1
+    var scoreUpdate = 0
+    var team3 = 0
+    var team4 = 0
   
  
     @IBOutlet weak var word: UILabel! //display the word
@@ -53,15 +56,17 @@ class LiveScreen: UIViewController, UITextFieldDelegate{
         } else {
             view.backgroundColor = .blue
         }
+        
+    
     }
     
-     func viewWillAppear() {
-        if teamTracker == 1 {
-            view.backgroundColor = .red
-        } else {
-            view.backgroundColor = .blue
-        }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+       
+        print("viewWillAppear is called")
     }
+    
+  
     
     func shuffleArray(arrayToBeShuffled array1: [String]) -> [String] { //shuffle the array function
         var oldArray = array1
@@ -95,12 +100,15 @@ class LiveScreen: UIViewController, UITextFieldDelegate{
     
     @IBAction func buttonTapped(_ sender: Any) { //start button
         
-        skipLabel.isHidden = false
+    
         gotItLabel.isHidden = false
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(LiveScreen.counter), userInfo: nil, repeats: true)
         buttonTappedLabel.isHidden = true
-       
+        if shuffledArray.count == 1 { //hides the skip when there is one word left
+            skipLabel.isHidden = true} else {
+            skipLabel.isHidden = false
+        }
         word.isHidden = false
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(LiveScreen.counter), userInfo: nil, repeats: true)
         print(shuffledArray)
         if shuffledArray.isEmpty == false {
             
@@ -110,28 +118,40 @@ class LiveScreen: UIViewController, UITextFieldDelegate{
     
     @IBAction func gotIt(_ sender: Any) { //got it button
         
+        scoreUpdate += 1
         if numberOfWords > 0 { //track the amount of words left
             numberOfWords -= 1
             wordsLeft.text = String(numberOfWords)
         }
+        if numberOfWords == 0 { //when all words are done then go to main menu
+            shuffledArray = []
+            endTurn()
+        }
         if shuffledArray.count == 2 { //hides the skip when there is one word left
             skipLabel.isHidden = true
         }
-        if shuffledArray.isEmpty == false { //removes the current word and goes to the next one. Cycles through the whole deck
-           if shuffledArray[arrayTracker] == shuffledArray.last {
-                nextElement()
+        if shuffledArray.count > 1 { //removes the current word and goes to the next one. Cycles through the whole deck
+              if word.text == shuffledArray.last {
+               arrayTracker = 0
                 shuffledArray.removeLast()
+                word.text = shuffledArray[arrayTracker]
             } else {
                 nextElement()
-                shuffledArray.remove(at: arrayTracker - 1)
+                shuffledArray.remove(at: arrayTracker - 1)  //may need to update
             }
-        }
+       }
         
 }
     
     @IBAction func skip(_ sender: Any) {//skip button
         nextElement()
 }
+    
+    func endTurn() { //things to do at the end
+        arrayTest = shuffledArray
+        switchTeam()
+        performSegue(withIdentifier: "goBackMainMenu", sender: self)
+    }
     
     
     @objc func counter() {
@@ -140,10 +160,7 @@ class LiveScreen: UIViewController, UITextFieldDelegate{
         
         if (seconds == 0) {
             timer.invalidate()
-            arrayTest = shuffledArray
-            switchTeam()
-            performSegue(withIdentifier: "goBackMainMenu", sender: self) //go back button is hidden from view
-         
+             endTurn()
     }
 }
     
@@ -151,6 +168,10 @@ class LiveScreen: UIViewController, UITextFieldDelegate{
         if let destination = segue.destination as? MainMenu {
             destination.runningWords = arrayTest
             destination.teamTracker = teamTracker
+            destination.runningScore = scoreUpdate
+            destination.team1 = team3
+            destination.team2 = team4
+            
         }
     }
     
