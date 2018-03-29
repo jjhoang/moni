@@ -45,12 +45,13 @@ class MainMenu: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         configureTextFields()
         configureTapGesture()
-    
-    }
+        
+       
+}
     
    override func viewWillAppear(_ animated: Bool) {
         scoreUpdate()
-    if started == true {
+    if started == true { //when the game starts
         addWords.isHidden = true
         wordCountLabel.isHidden = true
         wordCountWord.isHidden = true
@@ -62,7 +63,14 @@ class MainMenu: UIViewController, UITextFieldDelegate {
      newRoundStart()
     wordsLeft.text = String(runningWords.count) //shows # remaining words
     
-
+   /* if runningWords.count < 1 && wordsForNewRound.count < 2 {
+        
+        startButtonLabel.isHidden = true
+        print("it's  hidden")
+        print("running words count \(runningWords.count)")
+        print("wordsfornewround count \(wordsForNewRound.count)")
+    }*/
+    
 }
     
     
@@ -83,6 +91,9 @@ class MainMenu: UIViewController, UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool { //when user hits Done on keyboard
         textField.resignFirstResponder()
         textField.text = ""
+       /* if originalWords.count > 2 || wordsForNewRound.count > 2 { //unhide the start button when at least 2 words are entered
+             startButtonLabel.isHidden = false
+         print("it's not hidden") }*/
         return true
     }
     
@@ -103,6 +114,8 @@ class MainMenu: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
+        
+        
         numberOfWords += 1 //updates the counter
         wordCountLabel.text = String(numberOfWords)
         originalWords.append(addWords.text!) //adds what the user inputs to originalWords array
@@ -113,15 +126,19 @@ class MainMenu: UIViewController, UITextFieldDelegate {
     func newRoundStart() {
         if roundTracker == 2 {
             round.text = "Round 2: One Word"
+            startButtonLabel.isHidden = false
         } else if roundTracker == 3 {
              round.text = "Round 3: Charades"
+             startButtonLabel.isHidden = false
         }
         if runningWords.count == 0 && wordsForNewRound.count > 1 {
             if roundTracker == 2 {
                 round.text = "Round 2: One Word"
+                 startButtonLabel.isHidden = false
                 runningWords = wordsForNewRound
             } else if roundTracker == 3 {
                 round.text = "Round 3: Charades"
+                 startButtonLabel.isHidden = false
                 runningWords = wordsForNewRound
             } else if roundTracker == 4 { //game over
                 round.text = "GAME OVER"
@@ -134,7 +151,6 @@ class MainMenu: UIViewController, UITextFieldDelegate {
     
     func newGame() {
         
-   
     }
     
 
