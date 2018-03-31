@@ -52,13 +52,6 @@
                                     <action selector="skip:" destination="BYZ-38-t0r" eventType="touchUpInside" id="UKF-qZ-xWD"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="WORD" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XiC-8K-Nou">
-                                <rect key="frame" x="16" y="120" width="343" height="243"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="51"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eaa-Pa-fY0">
                                 <rect key="frame" x="170" y="371" width="34" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -66,8 +59,15 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="WORD" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9v0-Qq-zko">
+                                <rect key="frame" x="16" y="94" width="343" height="240"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="60"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="60" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="220-DD-BKJ">
-                                <rect key="frame" x="54" y="36" width="267" height="106"/>
+                                <rect key="frame" x="54" y="0.0" width="267" height="106"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="60"/>
                                 <nil key="textColor"/>
@@ -84,14 +84,14 @@
                         <outlet property="countDown" destination="220-DD-BKJ" id="Y4f-Ic-WUS"/>
                         <outlet property="gotItLabel" destination="eeB-ZE-3nD" id="LNZ-f5-wOH"/>
                         <outlet property="skipLabel" destination="GPv-GL-UbS" id="Bge-sP-O5m"/>
-                        <outlet property="word" destination="XiC-8K-Nou" id="ddm-xT-jNq"/>
+                        <outlet property="word" destination="9v0-Qq-zko" id="JhM-Sv-3OL"/>
                         <outlet property="wordsLeft" destination="Eaa-Pa-fY0" id="Gx3-e0-JPe"/>
                         <segue destination="okr-N5-JAw" kind="show" identifier="goBackMainMenu" id="MC5-kF-zRo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2332" y="-67"/>
+            <point key="canvasLocation" x="2332" y="-67.016491754122939"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="dK0-Oq-Tsj">
@@ -293,20 +293,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Word Count:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cJt-gx-lkH">
-                                <rect key="frame" x="118" y="85" width="97" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bhe-fr-i5W" userLabel="wordCountLabel">
-                                <rect key="frame" x="217" y="85" width="22" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Team Red" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2jd-fF-Czi">
                                 <rect key="frame" x="46" y="230" width="107" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -361,14 +347,7 @@
                                     <segue destination="BYZ-38-t0r" kind="show" identifier="t1Start" id="Zoj-Zx-ghe"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="olP-Cp-u9s">
-                                <rect key="frame" x="16" y="32" width="337" height="38"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Round 1: Anything" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CcC-sm-ETE" userLabel="roundLabel">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Round 1: Anything" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CcC-sm-ETE" userLabel="roundLabel">
                                 <rect key="frame" x="16" y="32" width="337" height="127"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="29"/>
@@ -383,19 +362,25 @@
                                     <action selector="currentWordsTest:" destination="okr-N5-JAw" eventType="touchUpInside" id="1JG-GU-eZk"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qh1-xX-B02">
+                                <rect key="frame" x="313" y="573" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="test:" destination="okr-N5-JAw" eventType="touchUpInside" id="Jat-hc-YBS"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="Z4M-pX-Hji"/>
                     </view>
                     <navigationItem key="navigationItem" id="eh5-eN-4C9"/>
                     <connections>
-                        <outlet property="addWords" destination="olP-Cp-u9s" id="2Mh-Mb-daj"/>
                         <outlet property="blueScore" destination="jZK-5U-psl" id="iRF-GF-wHO"/>
+                        <outlet property="numberOfWordsLabel" destination="crd-HY-nmi" id="Kyf-Li-afU"/>
                         <outlet property="redScore" destination="mem-qV-haQ" id="oZL-Dn-rFg"/>
                         <outlet property="round" destination="CcC-sm-ETE" id="rXM-9d-Ljv"/>
                         <outlet property="startButtonLabel" destination="gGv-uV-RLF" id="Fhz-eD-fgk"/>
-                        <outlet property="wordCountLabel" destination="Bhe-fr-i5W" id="yuV-qH-y4z"/>
-                        <outlet property="wordCountWord" destination="cJt-gx-lkH" id="Nec-UH-Obb"/>
                         <outlet property="wordsLeft" destination="7WF-SJ-bHt" id="TzW-fs-xLX"/>
                     </connections>
                 </viewController>
@@ -405,7 +390,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Zoj-Zx-ghe"/>
         <segue reference="MC5-kF-zRo"/>
         <segue reference="8uC-Ae-hDv"/>
         <segue reference="JDD-lC-ir0"/>

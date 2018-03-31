@@ -11,7 +11,7 @@ import UIKit
 
 class LiveScreen: UIViewController, UITextFieldDelegate{
 
-    var seconds = 10
+    var seconds = 5
     var numberOfWords = 0
     
    
@@ -28,6 +28,7 @@ class LiveScreen: UIViewController, UITextFieldDelegate{
     var started = true
   
  
+   
     @IBOutlet weak var word: UILabel! //display the word
     @IBOutlet weak var countDown: UILabel! //countdown label
     @IBOutlet weak var buttonTappedLabel: UIButton! //enter label
@@ -35,12 +36,13 @@ class LiveScreen: UIViewController, UITextFieldDelegate{
     @IBOutlet weak var gotItLabel: UIButton!
     @IBOutlet weak var skipLabel: UIButton! //cycle through words
     
-   
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         if let nameToDisplay = liveScreenWords {
+            word.adjustsFontSizeToFitWidth = true
             word.text = nameToDisplay
         }
         
@@ -57,7 +59,7 @@ class LiveScreen: UIViewController, UITextFieldDelegate{
         if teamTracker == 1 {
             view.backgroundColor = .red
         } else {
-            view.backgroundColor = .cyan
+            view.backgroundColor = .blue
         }
         
     
@@ -66,7 +68,6 @@ class LiveScreen: UIViewController, UITextFieldDelegate{
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
        
-        print("viewWillAppear is called")
     }
     
   
@@ -138,7 +139,6 @@ class LiveScreen: UIViewController, UITextFieldDelegate{
         if shuffledArray.count > 1 { //removes the current word and goes to the next one. Cycles through the whole deck
             if let index = shuffledArray.index(of: word.text!) { //TESTING
                 shuffledArray.remove(at: index)
-                print("WORKING")
                 nextElement()
             }
         }
@@ -195,16 +195,18 @@ class LiveScreen: UIViewController, UITextFieldDelegate{
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? MainMenu {
-            destination.runningWords = arrayTest
+            if arrayTest.count >= 1 { //determine which array to pass on (either current or all)
+                liveWords = arrayTest } else {
+                liveWords = originalWords1              }
             destination.teamTracker = teamTracker
             destination.runningScore = scoreUpdate
             destination.team1 = team3
             destination.team2 = team4
             destination.started = started
             destination.roundTracker = roundTracker
-        }
+        
     }
-    
+}
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

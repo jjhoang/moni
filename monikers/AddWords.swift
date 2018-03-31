@@ -9,8 +9,9 @@
 import UIKit
 
 var addedWords = 0
-var everyWord: [String] = []
+var liveWords: [String] = []
 var originalWords1: [String] = []
+
 
 class AddWords: UIViewController, UITextFieldDelegate  {
     
@@ -37,8 +38,7 @@ class AddWords: UIViewController, UITextFieldDelegate  {
     func textFieldDidEndEditing(_ textField: UITextField) {
             addedWords += 1 // updates counter
             wordCount.text = String(addedWords)
-            print("this is being called")
-            everyWord.append(addWords.text!) // add words to everyWord array
+            liveWords.append(addWords.text!) // add words to everyWord array
             originalWords1.append(addWords.text!) //add words to originalWords array
 }
     
