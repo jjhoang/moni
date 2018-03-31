@@ -8,9 +8,10 @@
 
 import UIKit
 
+
 class LiveScreen: UIViewController, UITextFieldDelegate{
 
-    var seconds = 60
+    var seconds = 10
     var numberOfWords = 0
     
    
@@ -56,7 +57,7 @@ class LiveScreen: UIViewController, UITextFieldDelegate{
         if teamTracker == 1 {
             view.backgroundColor = .red
         } else {
-            view.backgroundColor = .blue 
+            view.backgroundColor = .cyan
         }
         
     
@@ -172,6 +173,7 @@ class LiveScreen: UIViewController, UITextFieldDelegate{
     @IBAction func skip(_ sender: Any) {//skip button
         print("current round is \(roundTracker)")
         nextElement()
+
 }
     
     func endTurn() { //things to do at the end

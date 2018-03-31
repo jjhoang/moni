@@ -21,13 +21,14 @@ class MainMenu: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var wordsLeft: UILabel!
     @IBOutlet weak var startButtonLabel: UIButton!
     
-    
+ 
     @IBAction func currentWordsTest(_ sender: Any) {
     print("There are \(runningWords)")
     print("total words are \(originalWords)")
     print("saved array is \(wordsForNewRound)")
     print("round is currently \(roundTracker)")
     }
+    
     
     var save = UserDefaults.standard
     var wordsForNewRound: [String] = []
@@ -45,8 +46,6 @@ class MainMenu: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         configureTextFields()
         configureTapGesture()
-        
-       
 }
     
    override func viewWillAppear(_ animated: Bool) {
@@ -56,12 +55,14 @@ class MainMenu: UIViewController, UITextFieldDelegate {
         wordCountLabel.isHidden = true
         wordCountWord.isHidden = true
         round.isHidden = false
-    } else {
+        wordsLeft.text = String(runningWords.count) //shows # remaining words
+    } else { //when it hasn't started
       round.isHidden = true
+      wordsLeft.text = String(addedWords)
     }
      wordsForNewRound = save.stringArray(forKey: "originalWords") ?? [String]() //loads words with the saved array
      newRoundStart()
-    wordsLeft.text = String(runningWords.count) //shows # remaining words
+
     
    /* if runningWords.count < 1 && wordsForNewRound.count < 2 {
         
@@ -72,6 +73,8 @@ class MainMenu: UIViewController, UITextFieldDelegate {
     }*/
     
 }
+    
+   
     
     
     
@@ -96,6 +99,7 @@ class MainMenu: UIViewController, UITextFieldDelegate {
          print("it's not hidden") }*/
         return true
     }
+    
     
     func scoreUpdate() {
         
@@ -151,12 +155,15 @@ class MainMenu: UIViewController, UITextFieldDelegate {
     
     func newGame() {
         
+        //what needs to be done in a new game
+        
     }
     
 
     
     @IBAction func t1Start(_ sender: Any) {
          performSegue(withIdentifier: "t1Start", sender: self)
+           
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
