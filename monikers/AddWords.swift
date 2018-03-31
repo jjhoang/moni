@@ -36,11 +36,16 @@ class AddWords: UIViewController, UITextFieldDelegate  {
   
     
     func textFieldDidEndEditing(_ textField: UITextField) {
+        
+        if textField.text?.isEmpty == false {
             addedWords += 1 // updates counter
             wordCount.text = String(addedWords)
             liveWords.append(addWords.text!) // add words to everyWord array
             originalWords1.append(addWords.text!) //add words to originalWords array
-}
+        } else{
+        return 
+    }
+    }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool { //hides the keyboard when touching outside part 1
         textField.resignFirstResponder()
