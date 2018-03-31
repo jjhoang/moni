@@ -10,24 +10,29 @@ import UIKit
 
 class MainMenu: UIViewController, UITextFieldDelegate {
 
+    @IBAction func test(_ sender: Any) { //testing purposes
+        
+        print("round is \(roundTracker)")
+ 
+    }
     
     
-    @IBOutlet weak var addWords: UITextField!
-    @IBOutlet weak var wordCountWord: UILabel!
-    @IBOutlet weak var wordCountLabel: UILabel!
     @IBOutlet weak var redScore: UILabel!
     @IBOutlet weak var blueScore: UILabel!
     @IBOutlet weak var round: UILabel!
     @IBOutlet weak var wordsLeft: UILabel!
     @IBOutlet weak var startButtonLabel: UIButton!
+    @IBOutlet weak var numberOfWordsLabel: UILabel!
     
-    
+ 
     @IBAction func currentWordsTest(_ sender: Any) {
-    print("There are \(runningWords)")
-    print("total words are \(originalWords)")
     print("saved array is \(wordsForNewRound)")
     print("round is currently \(roundTracker)")
+    print("LiveWords is currently \(liveWords)")
+    print("OriginalWords1 is currently \(originalWords1)")
+        
     }
+    
     
     var save = UserDefaults.standard
     var wordsForNewRound: [String] = []
@@ -39,37 +44,30 @@ class MainMenu: UIViewController, UITextFieldDelegate {
     var runningScore = 0
     var started = false
     var roundTracker = 1
-    public var runningWords: [String] = []
+
     
    
     override func viewDidLoad() {
-        configureTextFields()
         configureTapGesture()
-    
-    }
-    
-   override func viewWillAppear(_ animated: Bool) {
-        scoreUpdate()
-    if started == true {
-        addWords.isHidden = true
-        wordCountLabel.isHidden = true
-        wordCountWord.isHidden = true
-        round.isHidden = false
-    } else {
-      round.isHidden = true
-    }
-     wordsForNewRound = save.stringArray(forKey: "originalWords") ?? [String]() //loads words with the saved array
-     newRoundStart()
-    wordsLeft.text = String(runningWords.count) //shows # remaining words
-    
-
 }
     
-    
-    
-    private func configureTextFields(){
-        addWords.delegate = self
+   override func viewWillAppear(_ animated: Bool) {
+         newRoundStart()
+        scoreUpdate()
+    if started == true { //when the game starts
+        round.isHidden = false
+        wordsLeft.text = String(liveWords.count) //shows # remaining words
+    } else { //when it hasn't started
+      wordsLeft.text = String(addedWords)
     }
+     wordsForNewRound = save.stringArray(forKey: "originalWords1") ?? [String]() //assign it to WordsforNewRound
+     save.set(originalWords1, forKey: "originalWords1" )//save the originalWords1
+    print("viewwillappear called")
+}
+    
+   
+    
+    
     
     private func configureTapGesture(){ //hides the keyboard when touching outside part 1
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(MainMenu.handleTap))
@@ -85,6 +83,7 @@ class MainMenu: UIViewController, UITextFieldDelegate {
         textField.text = ""
         return true
     }
+    
     
     func scoreUpdate() {
         
@@ -102,50 +101,42 @@ class MainMenu: UIViewController, UITextFieldDelegate {
        
     }
     
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        numberOfWords += 1 //updates the counter
-        wordCountLabel.text = String(numberOfWords)
-        originalWords.append(addWords.text!) //adds what the user inputs to originalWords array
-        runningWords.append(addWords.text!) //add what user inputs to runningWords (update actively)
-        save.set(originalWords, forKey: "originalWords" )
-    }
 
     func newRoundStart() {
+        
         if roundTracker == 2 {
             round.text = "Round 2: One Word"
+            startButtonLabel.isHidden = false
         } else if roundTracker == 3 {
              round.text = "Round 3: Charades"
-        }
-        if runningWords.count == 0 && wordsForNewRound.count > 1 {
-            if roundTracker == 2 {
-                round.text = "Round 2: One Word"
-                runningWords = wordsForNewRound
-            } else if roundTracker == 3 {
-                round.text = "Round 3: Charades"
-                runningWords = wordsForNewRound
-            } else if roundTracker == 4 { //game over
-                round.text = "GAME OVER"
-                wordsForNewRound = []
-                startButtonLabel.isHidden = true
-            }
+             startButtonLabel.isHidden = false
+        } else if roundTracker == 4 {
+            round.text = "GAME OVER"
+            originalWords1 = []
+            startButtonLabel.isHidden = true
+            wordsLeft.isHidden = true
+            numberOfWordsLabel.isHidden = true
+            print("GAME OVER")
         }
       
     }
     
     func newGame() {
         
-   
+        //what needs to be done in a new game
+        
     }
     
 
     
     @IBAction func t1Start(_ sender: Any) {
          performSegue(withIdentifier: "t1Start", sender: self)
+           
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? LiveScreen {
-            destination.arrayTest = runningWords
+            destination.arrayTest = liveWords
             destination.arrayTracker = 0
             destination.teamTracker = teamTracker
             destination.team3 = team1
