@@ -11,7 +11,7 @@ import UIKit
 
 
 class LiveScreen: UIViewController, UITextFieldDelegate{
-    var gameSeconds = 0
+    var gameSeconds = 0 //local game seconds
     var save = UserDefaults.standard
     var numberOfWords = 0
     var timer = Timer()
