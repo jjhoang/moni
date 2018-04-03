@@ -37,7 +37,7 @@ class AddWords: UIViewController, UITextFieldDelegate  {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         
-        if (textField.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)! == false { //checks to see if the string is empty or has whitespaces 
+        if (textField.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)! == false { //checks to see if the string is empty or has whitespaces
             addedWords += 1 // updates counter
             wordCount.text = String(addedWords)
             liveWords.append(addWords.text!) // add words to everyWord array]
@@ -46,8 +46,17 @@ class AddWords: UIViewController, UITextFieldDelegate  {
         } else{
         return
     }
-      
     }
+    /*func textField(_ textField: UITextField, shouldChangeCharactersIn: NSRange, replacementString: String) -> Bool {
+        
+        let maxLength = 4
+        let currentString: NSString = textField.text! as NSString
+        let newString: NSString =
+            currentString.replacingCharacters(in: range, with: String) as NSString
+        return newString.length <= maxLength
+        } */
+      
+    
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool { //hides the keyboard when touching outside part 1
         textField.resignFirstResponder()
