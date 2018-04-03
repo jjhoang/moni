@@ -10,11 +10,6 @@ import UIKit
 
 class MainMenu: UIViewController, UITextFieldDelegate {
 
-    @IBAction func test(_ sender: Any) { //testing purposes
-        
-        print("round is \(roundTracker)")
- 
-    }
     
     
     @IBOutlet weak var redScore: UILabel!
@@ -30,7 +25,6 @@ class MainMenu: UIViewController, UITextFieldDelegate {
     print("round is currently \(roundTracker)")
     print("LiveWords is currently \(liveWords)")
     print("OriginalWords1 is currently \(originalWords1)")
-        
     }
     
     
@@ -44,6 +38,7 @@ class MainMenu: UIViewController, UITextFieldDelegate {
     var runningScore = 0
     var started = false
     var roundTracker = 1
+    var resetTimer = 60
 
     
    
@@ -52,7 +47,7 @@ class MainMenu: UIViewController, UITextFieldDelegate {
 }
     
    override func viewWillAppear(_ animated: Bool) {
-         newRoundStart()
+        newRoundStart()
         scoreUpdate()
     if started == true { //when the game starts
         round.isHidden = false
@@ -62,13 +57,10 @@ class MainMenu: UIViewController, UITextFieldDelegate {
     }
      wordsForNewRound = save.stringArray(forKey: "originalWords1") ?? [String]() //assign it to WordsforNewRound
      save.set(originalWords1, forKey: "originalWords1" )//save the originalWords1
-    print("viewwillappear called")
+     print("viewwillappear called")
 }
     
    
-    
-    
-    
     private func configureTapGesture(){ //hides the keyboard when touching outside part 1
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(MainMenu.handleTap))
         view.addGestureRecognizer(tapGesture)
@@ -98,7 +90,6 @@ class MainMenu: UIViewController, UITextFieldDelegate {
             redScore.text = String(team1)
             blueScore.text = String(team2)
         }
-       
     }
     
 
@@ -142,10 +133,11 @@ class MainMenu: UIViewController, UITextFieldDelegate {
             destination.team3 = team1
             destination.team4 = team2
             destination.roundTracker = roundTracker
+            destination.gameSeconds = seconds
+  
             
         }
     }
-    
 }
 
 

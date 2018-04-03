@@ -9,12 +9,11 @@
 import UIKit
 
 
-class LiveScreen: UIViewController, UITextFieldDelegate{
 
-    var seconds = 5
+class LiveScreen: UIViewController, UITextFieldDelegate{
+    var gameSeconds = 0 //local game seconds
+    var save = UserDefaults.standard
     var numberOfWords = 0
-    
-   
     var timer = Timer()
     var liveScreenWords: String?
     var arrayTest: [String] = [ ]
@@ -57,16 +56,17 @@ class LiveScreen: UIViewController, UITextFieldDelegate{
         gotItLabel.isHidden = true
         
         if teamTracker == 1 {
-            view.backgroundColor = .red
+            view.backgroundColor = .lightGray
         } else {
-            view.backgroundColor = .blue
+            view.backgroundColor = .brown
         }
-        
-    
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        countDown.text = String(gameSeconds)
+       // save.set(resetTimer,forKey: "resetTimer")
+        //seconds = save.integer(forKey: "resetTimer")
        
     }
     
@@ -100,11 +100,8 @@ class LiveScreen: UIViewController, UITextFieldDelegate{
             teamTracker = 1}
     }
     
-    
-    
     @IBAction func buttonTapped(_ sender: Any) { //start button
         
-    
         gotItLabel.isHidden = false
         buttonTappedLabel.isHidden = true
         if shuffledArray.count == 1 { //hides the skip when there is one word left
@@ -143,31 +140,6 @@ class LiveScreen: UIViewController, UITextFieldDelegate{
             }
         }
  
-            
-      /*  if shuffledArray.count > 1 { //removes the current word and goes to the next one. Cycles through the whole deck //old way
-              if word.text == shuffledArray.last {
-               arrayTracker = 0
-                shuffledArray.removeLast()
-                word.text = shuffledArray[arrayTracker]
-              } else if shuffledArray.count == 2 && word.text == shuffledArray.first {
-                //shuffledArray.removeFirst()
-                arrayTracker = 0
-                
-                if let index = shuffledArray.index(of: word.text!) { //TESTING
-                    shuffledArray.remove(at: index)
-                    print("THIS WORKED!")
-                    }
-                word.text = shuffledArray[arrayTracker]
-            } else {
-                if let index = shuffledArray.index(of: word.text!) { //TESTING
-                    shuffledArray.remove(at: index)
-                    print("THIS WORKED!")
-                }
-                nextElement()
-                //shuffledArray.remove(at: arrayTracker - 1)  //may need to update
-                
-            }
-        }*/
 }
     
     @IBAction func skip(_ sender: Any) {//skip button
@@ -180,14 +152,15 @@ class LiveScreen: UIViewController, UITextFieldDelegate{
         arrayTest = shuffledArray
         switchTeam()
         performSegue(withIdentifier: "goBackMainMenu", sender: self)
+
     }
     
     
     @objc func counter() {
-        seconds -= 1
-        countDown.text = String(seconds)
+        gameSeconds -= 1
+        countDown.text = String(gameSeconds)
         
-        if (seconds == 0) {
+        if (gameSeconds <= 0) {
             timer.invalidate()
              endTurn()
     }
@@ -204,6 +177,9 @@ class LiveScreen: UIViewController, UITextFieldDelegate{
             destination.team2 = team4
             destination.started = started
             destination.roundTracker = roundTracker
+    
+            print("gameSecondis \(gameSeconds)")
+            print("seconds is \(seconds)")
         
     }
 }
