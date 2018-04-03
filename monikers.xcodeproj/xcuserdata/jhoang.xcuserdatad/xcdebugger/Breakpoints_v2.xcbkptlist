@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "monikers/LiveScreen.swift"
-            timestampString = "544227058.2077121"
+            timestampString = "544249969.178494"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
             landmarkName = "LiveScreen"
             landmarkType = "3">
          </BreakpointContent>
@@ -26,27 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "monikers/LiveScreen.swift"
-            timestampString = "544227058.207813"
+            timestampString = "544249969.17892"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "150"
-            endingLineNumber = "150"
-            landmarkName = "gotIt(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "monikers/LiveScreen.swift"
-            timestampString = "544227058.207916"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
             landmarkName = "LiveScreen"
             landmarkType = "3">
          </BreakpointContent>

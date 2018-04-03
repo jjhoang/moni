@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0D02215620575A4E007AAEA2 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D02215520575A4E007AAEA2 /* MainMenu.swift */; };
+		0DCB4BF420705503002EDA82 /* Setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DCB4BF320705503002EDA82 /* Setup.swift */; };
 		0DE7CA6C206D529F0037E57B /* AddWords.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE7CA6B206D529F0037E57B /* AddWords.swift */; };
 		0DE861C6204F915C00B070C5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE861C5204F915C00B070C5 /* AppDelegate.swift */; };
 		0DE861C8204F915C00B070C5 /* LiveScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE861C7204F915C00B070C5 /* LiveScreen.swift */; };
@@ -18,6 +19,7 @@
 
 /* Begin PBXFileReference section */
 		0D02215520575A4E007AAEA2 /* MainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
+		0DCB4BF320705503002EDA82 /* Setup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setup.swift; sourceTree = "<group>"; };
 		0DE7CA6B206D529F0037E57B /* AddWords.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWords.swift; sourceTree = "<group>"; };
 		0DE861C2204F915C00B070C5 /* monikers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = monikers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0DE861C5204F915C00B070C5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -59,6 +61,7 @@
 			isa = PBXGroup;
 			children = (
 				0DE861C5204F915C00B070C5 /* AppDelegate.swift */,
+				0DCB4BF320705503002EDA82 /* Setup.swift */,
 				0DE7CA6B206D529F0037E57B /* AddWords.swift */,
 				0D02215520575A4E007AAEA2 /* MainMenu.swift */,
 				0DE861C7204F915C00B070C5 /* LiveScreen.swift */,
@@ -145,6 +148,7 @@
 				0DE861C8204F915C00B070C5 /* LiveScreen.swift in Sources */,
 				0DE7CA6C206D529F0037E57B /* AddWords.swift in Sources */,
 				0D02215620575A4E007AAEA2 /* MainMenu.swift in Sources */,
+				0DCB4BF420705503002EDA82 /* Setup.swift in Sources */,
 				0DE861C6204F915C00B070C5 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
