@@ -133,8 +133,7 @@ class MainMenu: UIViewController, UITextFieldDelegate {
             destination.team3 = team1
             destination.team4 = team2
             destination.roundTracker = roundTracker
-           // seconds = save.integer(forKey: "resetTimer")
-            
+            destination.gameSeconds = seconds
         }
     }
 }

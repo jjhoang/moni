@@ -9,8 +9,9 @@
 import UIKit
 
 
+
 class LiveScreen: UIViewController, UITextFieldDelegate{
-    var seconds = 45
+    var gameSeconds = 0
     var save = UserDefaults.standard
     var numberOfWords = 0
     var timer = Timer()
@@ -63,7 +64,7 @@ class LiveScreen: UIViewController, UITextFieldDelegate{
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        countDown.text = String(seconds)
+        countDown.text = String(gameSeconds)
        // save.set(resetTimer,forKey: "resetTimer")
         //seconds = save.integer(forKey: "resetTimer")
        
@@ -150,18 +151,16 @@ class LiveScreen: UIViewController, UITextFieldDelegate{
     func endTurn() { //things to do at the end
         arrayTest = shuffledArray
         switchTeam()
-        print("end turn is happening")
-        //seconds = save.integer(forKey: "resetTimer")
         performSegue(withIdentifier: "goBackMainMenu", sender: self)
 
     }
     
     
     @objc func counter() {
-        seconds -= 1
-        countDown.text = String(seconds)
+        gameSeconds -= 1
+        countDown.text = String(gameSeconds)
         
-        if (seconds <= 0) {
+        if (gameSeconds <= 0) {
             timer.invalidate()
              endTurn()
     }
@@ -179,7 +178,8 @@ class LiveScreen: UIViewController, UITextFieldDelegate{
             destination.started = started
             destination.roundTracker = roundTracker
     
-            print("reset timer is \(resetTimer)")
+            print("gameSecondis \(gameSeconds)")
+            print("seconds is \(seconds)")
         
     }
 }
