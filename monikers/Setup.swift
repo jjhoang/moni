@@ -9,7 +9,6 @@
 import UIKit
 var seconds = 60
 
-
 class Setup: UIViewController {
     
     @IBOutlet weak var deckCount: UILabel!
@@ -42,6 +41,9 @@ class Setup: UIViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let deckSize = Int(deckSliderLabel.value) * 5 + 15 //original value is from 1-7 and * 5 + 15 will get to the desired deck size of 20-50
+        if let destination = segue.destination as? AddWords {
+            destination.deckSize = deckSize 
+        }
         print("decksize is \(deckSize)")
     
 

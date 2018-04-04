@@ -13,16 +13,21 @@ var liveWords: [String] = []
 var originalWords1: [String] = []
 
 
+
 class AddWords: UIViewController, UITextFieldDelegate  {
     
+    @IBOutlet weak var nextButtonLabel: UIButton!
+    var deckSize = 0
     
     override func viewDidLoad() {
         configureTextFields()
         configureTapGesture()
+        nextButtonLabel.isHidden = true
     }
     
     @IBAction func currentWords(_ sender: Any) { //for testing purposes
         print("words are currently \(originalWords1)")
+        print("\(deckSize)")
     }
     
 
@@ -37,27 +42,24 @@ class AddWords: UIViewController, UITextFieldDelegate  {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         
-        if (textField.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)! == false { //checks to see if the string is empty or has whitespaces
+        if (textField.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)! == false && addedWords < deckSize { //checks to see if the string is empty or has whitespaces and the added words is teh same as the determine deck size
             addedWords += 1 // updates counter
             wordCount.text = String(addedWords)
             liveWords.append(addWords.text!) // add words to everyWord array]
             originalWords1.append(addWords.text!) //add words to originalWords array
             
-        } else{
+        } else {
         return
     }
+        if addedWords == deckSize {
+            print("deck is full")
+            nextButtonLabel.isHidden = false
+            //needs to hide uitextfield and show next button
+        }
     }
-    /*func textField(_ textField: UITextField, shouldChangeCharactersIn: NSRange, replacementString: String) -> Bool {
-        
-        let maxLength = 4
-        let currentString: NSString = textField.text! as NSString
-        let newString: NSString =
-            currentString.replacingCharacters(in: range, with: String) as NSString
-        return newString.length <= maxLength
-        } */
+
       
-    
-    
+
     func textFieldShouldReturn(_ textField: UITextField) -> Bool { //hides the keyboard when touching outside part 1
         textField.resignFirstResponder()
         textField.text = ""
