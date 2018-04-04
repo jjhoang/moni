@@ -56,9 +56,9 @@ class LiveScreen: UIViewController, UITextFieldDelegate{
         gotItLabel.isHidden = true
         
         if teamTracker == 1 {
-            view.backgroundColor = .lightGray
+            view.backgroundColor = UIColor(red:0.99, green:0.41, blue:0.41, alpha:1.0)
         } else {
-            view.backgroundColor = .brown
+            view.backgroundColor = UIColor(red:0.27, green:0.57, blue:1.00, alpha:1.0)
         }
     }
     

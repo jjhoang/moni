@@ -18,6 +18,7 @@ var originalWords1: [String] = []
 
 class AddWords: UIViewController, UITextFieldDelegate  {
     
+    @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var alert: UILabel!
     @IBOutlet weak var nextButtonLabel: UIButton!
     var deckSize = 0
@@ -68,7 +69,9 @@ class AddWords: UIViewController, UITextFieldDelegate  {
         if addedWords == deckSize {
             print("deck is full")
             nextButtonLabel.isHidden = false
-            //needs to hide uitextfield and show next button
+            textField.isHidden = true
+            alert.isHidden = false 
+            alert.text = "Deck Complete!"
         }
     }
 
