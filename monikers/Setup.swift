@@ -7,7 +7,7 @@
 //
 
 import UIKit
-var seconds = 60
+var seconds = 45 //default if slider doesn't change
 
 class Setup: UIViewController {
     
@@ -16,6 +16,9 @@ class Setup: UIViewController {
     @IBOutlet weak var deckCount: UILabel!
     @IBOutlet weak var deckSliderLabel: UISlider!
 
+    override func viewDidLoad() {
+         view.backgroundColor = UIColor(red:0.21, green:0.84, blue:0.72, alpha:1.0) //turquoise# 36D7B7
+    }
     @IBAction func deckSlider(_ sender: UISlider){
       deckSliderLabel.value = roundf(deckSliderLabel.value) //changes slider from a float to an int
       deckCount.text = String(Int(sender.value * 5 + 15)) //displays 20-50 int

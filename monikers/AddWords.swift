@@ -16,18 +16,21 @@ var originalWords1: [String] = []
 
 
 
+
 class AddWords: UIViewController, UITextFieldDelegate  {
     
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var alert: UILabel!
     @IBOutlet weak var nextButtonLabel: UIButton!
     var deckSize = 0
-    
+    var testing: Set = [""]
+
     override func viewDidLoad() {
         configureTextFields()
         configureTapGesture()
         nextButtonLabel.isHidden = true
         alert.isHidden = true
+        view.backgroundColor = UIColor(red:0.21, green:0.84, blue:0.72, alpha:1.0) //turquoise# 36D7B7
     }
     
     @IBAction func currentWords(_ sender: Any) { //for testing purposes
@@ -60,6 +63,8 @@ class AddWords: UIViewController, UITextFieldDelegate  {
                 liveWords.append(addWords.text!) // add words to everyWord array]
                 originalWords1.append(addWords.text!) //add words to originalWords array
                 alert.isHidden = true
+              
+                
                 
             }
 
