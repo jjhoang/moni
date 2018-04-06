@@ -14,9 +14,6 @@ var originalWords1: [String] = []
 
 
 
-
-
-
 class AddWords: UIViewController, UITextFieldDelegate  {
     
     @IBOutlet weak var textField: UITextField!
@@ -64,8 +61,6 @@ class AddWords: UIViewController, UITextFieldDelegate  {
                 originalWords1.append(addWords.text!) //add words to originalWords array
                 alert.isHidden = true
               
-                
-                
             }
 
         } else {
@@ -81,15 +76,6 @@ class AddWords: UIViewController, UITextFieldDelegate  {
     }
 
     
-        
-   /* func checkDuplicates() { 
-        
-        for word in liveWords {
-            if liveWords.contains(word) {
-                print("found duplicate which is \(word)")
-            }
-        }
-    }*/
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool { //hides the keyboard when touching outside part 1
         textField.resignFirstResponder()
