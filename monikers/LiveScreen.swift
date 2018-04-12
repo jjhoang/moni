@@ -229,6 +229,9 @@ class LiveScreen: UIViewController, UITextFieldDelegate{
             destination.started = started
             destination.roundTracker = roundTracker
             timer.invalidate() //stop timer when screen moves back to Main menu
+                 timerForSound.invalidate()
+                 timerForSound2.invalidate()
+                 timerForSound3.invalidate()
             
     
             print("gameSecond is \(gameSeconds)")

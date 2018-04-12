@@ -15,7 +15,7 @@ var originalWords1: [String] = []
 
 
 class AddWords: UIViewController, UITextFieldDelegate  {
-    
+    let nextEndpoint = UILabel()
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var alert: UILabel!
     @IBOutlet weak var nextButtonLabel: UIButton!
@@ -28,6 +28,14 @@ class AddWords: UIViewController, UITextFieldDelegate  {
         nextButtonLabel.isHidden = true
         alert.isHidden = true
         view.backgroundColor = UIColor(red:0.21, green:0.84, blue:0.72, alpha:1.0) //turquoise# 36D7B7
+        nextButtonLabel.backgroundColor = .black
+        //capture the endpoint for nextbutton label
+        nextEndpoint.center = nextButtonLabel.center
+      
+        /* let stackView = UIStackView(arrangedSubviews: [nextButtonLabel])
+        stackView.axis = .vertical
+        stackView.frame = CGRect(x: 0, y: 0, width: 200, height: 400)
+        view.addSubview(stackView)*/
     }
     
     @IBAction func currentWords(_ sender: Any) { //for testing purposes
@@ -69,6 +77,9 @@ class AddWords: UIViewController, UITextFieldDelegate  {
         if addedWords == deckSize {
             print("deck is full")
             nextButtonLabel.isHidden = false
+            UIView.animate(withDuration: 0.3, animations: {
+                
+            })
             textField.isHidden = true
             alert.isHidden = false 
             alert.text = "Deck Complete!"

@@ -12,8 +12,7 @@ var seconds = 45 //default if slider doesn't change
 class Setup: UIViewController, UITextFieldDelegate {
     
 
-    @IBOutlet weak var team1: UITextField!
-    @IBOutlet weak var team2: UITextField!
+
     @IBOutlet weak var secondsLabel: UILabel!
     @IBOutlet weak var timeSliderLabel: UISlider!
     @IBOutlet weak var deckCount: UILabel!
@@ -21,14 +20,9 @@ class Setup: UIViewController, UITextFieldDelegate {
     var deckSliderValue = 0
     var timeCounter = 0
     
-    private func configureTextFields() {
-        team1.delegate = self
-        team2.delegate = self
-    }
+
     
     override func viewDidLoad() {
-        configureTextFields()
-        configureTapGesture()
          view.backgroundColor = UIColor(red:0.21, green:0.84, blue:0.72, alpha:1.0) //turquoise# 36D7B7
         if deckSliderValue != 0 {
             deckSliderLabel.value = Float(deckSliderValue)
@@ -61,34 +55,21 @@ class Setup: UIViewController, UITextFieldDelegate {
        // let deckSize = deckSliderLabel
     }
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool { //hides the keyboard when touching outside part 1
-        textField.resignFirstResponder()
-        textField.text = ""
-        return true
-    }
+
+
     
-    @objc func handleTap() { //hides the keyboard when touching outside part 2
-        view.endEditing(true)
-    }
-    
-    private func configureTapGesture(){ //hides the keyboard when touching outside part 1
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(Setup.handleTap))
-        view.addGestureRecognizer(tapGesture)
-    }
+
 
 
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let deckSize = Int(deckSliderLabel.value) //* 5 + 15
         //original value is from 1-7 and * 5 + 15 will get to the desired deck size of 20-50
-        if let destination = segue.destination as? Confirmation {
+        if let destination = segue.destination as? AddWords {
             destination.deckSize = deckSize
-            destination.timeSlider = Int(timeSliderLabel.value)
-            destination.deckSlider = Int(deckSliderLabel.value)
         }
-        print("decksize is \(deckSize)")
-    
-
+        
+     
 }
 }
 
