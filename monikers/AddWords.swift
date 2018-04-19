@@ -15,33 +15,91 @@ var originalWords1: [String] = []
 
 
 class AddWords: UIViewController, UITextFieldDelegate  {
+    //use this array to fill the "remainder" cards
+    var remainderDeck = [
+        "Tesla", "Donald Trump", "Britney Spears", "Disney World", "Green Tea", "Lemonade", "Michael Jackson", "John Mayer", "Selena Gomez", "Rocket",
+        "Drunk", "Barack Obama", "Nintendo 64", "Prison Break", "Game of Thrones", "911", "1989", "New York Times", "Liberal", "Climate Change"
+    ]
+    
     let nextEndpoint = UILabel()
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var alert: UILabel!
     @IBOutlet weak var nextButtonLabel: UIButton!
-    var deckSize = 0
+    @IBOutlet weak var addThisMany: UILabel!
+    var deckSize = 35
     var testing: Set = [""]
+    var numberOfPlayers = 2
+    var personalCardNumber = 0
+    var cardsPerPerson = 1
 
     override func viewDidLoad() {
         configureTextFields()
         configureTapGesture()
+        //make sure the numberOfPlayers isn't 0
+        numberOfPlayers = 2
         nextButtonLabel.isHidden = true
         alert.isHidden = true
         view.backgroundColor = UIColor(red:0.21, green:0.84, blue:0.72, alpha:1.0) //turquoise# 36D7B7
         nextButtonLabel.backgroundColor = .black
         //capture the endpoint for nextbutton label
         nextEndpoint.center = nextButtonLabel.center
+     
       
-        /* let stackView = UIStackView(arrangedSubviews: [nextButtonLabel])
-        stackView.axis = .vertical
-        stackView.frame = CGRect(x: 0, y: 0, width: 200, height: 400)
-        view.addSubview(stackView)*/
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+    
+        //determine how many cards each player adds
+        cardsPerPerson = (deckSize / numberOfPlayers)
+        
+        //add this amount of cards into the deck
+        let numberOfCardsLeft = deckSize % numberOfPlayers
+        personalCardNumber = cardsPerPerson
+        
+        addThisMany.text = "ADD \(cardsPerPerson) MORE"
+        notifyPlayer(title: "IMPORTANT", message: "Each player puts in \(personalCardNumber) words")
+        
+        //shuffle the miss cards
+        let shuffledRemainder = shuffleArray(arrayToBeShuffled: remainderDeck)
+        //add the shuffledremainder deck to the array to Add
+        for card in 1...numberOfCardsLeft {
+            addedWords += 1
+             wordCount.text = String(addedWords)
+             //add the content to the actual deck
+            liveWords.append(String(describing: shuffledRemainder[card]))
+            originalWords1.append(String(describing: shuffledRemainder[card]))
+        }
+    
+        print("Remainder: \(numberOfCardsLeft)")
+        print("Cards per person \(cardsPerPerson)")
+    }
+    
+    
+    func shuffleArray(arrayToBeShuffled array1: [String]) -> [String] { //shuffle the array function
+        var oldArray = array1
+        var newArray = [String]()
+        var randomNumber: Int
+        
+        for _ in array1 {
+            randomNumber = Int(arc4random_uniform(UInt32(oldArray.count - 1)))
+            newArray.append(oldArray[randomNumber])
+            oldArray.remove(at: randomNumber)
+        }
+        return newArray
+    }
+    
+
+    override func viewDidAppear(_ animated: Bool) {
+      
     }
     
     @IBAction func currentWords(_ sender: Any) { //for testing purposes
         print("words are currently \(originalWords1)")
         print("\(deckSize)")
+        print("number of players: \(numberOfPlayers)")
+        
     }
+    
     
 
     @IBOutlet weak var addWords: UITextField!
@@ -64,6 +122,16 @@ class AddWords: UIViewController, UITextFieldDelegate  {
                 
             } else {
                 addedWords += 1 // updates counter
+                
+                if personalCardNumber == 1 {
+                    
+                    personalCardNumber = cardsPerPerson
+                    addThisMany.text = String("ADD \(personalCardNumber) MORE")
+                    notifyPlayer(title: "Pass to next player", message: "They will enter \(personalCardNumber) words")
+                } else if personalCardNumber != 0 {
+                    personalCardNumber -= 1
+                    addThisMany.text = String("ADD \(personalCardNumber) MORE")
+                }
                 wordCount.text = String(addedWords)
                 liveWords.append(addWords.text!) // add words to everyWord array]
                 originalWords1.append(addWords.text!) //add words to originalWords array
@@ -77,6 +145,7 @@ class AddWords: UIViewController, UITextFieldDelegate  {
         if addedWords == deckSize {
             print("deck is full")
             nextButtonLabel.isHidden = false
+            addThisMany.isHidden = true
             UIView.animate(withDuration: 0.3, animations: {
                 
             })
@@ -86,6 +155,15 @@ class AddWords: UIViewController, UITextFieldDelegate  {
         }
     }
 
+    func notifyPlayer(title: String, message: String){
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        
+        alert.addAction(UIAlertAction(title: "GOT IT!", style: UIAlertActionStyle.default, handler: { (action) in
+            
+            alert.dismiss(animated: true, completion: nil)
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
     
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool { //hides the keyboard when touching outside part 1
