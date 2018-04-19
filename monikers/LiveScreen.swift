@@ -7,14 +7,22 @@
 //
 
 import UIKit
-
+import AVFoundation
 
 
 class LiveScreen: UIViewController, UITextFieldDelegate{
+    
+    
+    var beepSound:AVAudioPlayer!
+    var endSound:AVAudioPlayer!
+    
     var gameSeconds = 0 //local game seconds
     var save = UserDefaults.standard
     var numberOfWords = 0
     var timer = Timer()
+    var timerForSound = Timer()
+     var timerForSound2 = Timer()
+     var timerForSound3 = Timer()
     var liveScreenWords: String?
     var arrayTest: [String] = [ ]
     var shuffledArray: [String] = [ ]
@@ -26,7 +34,7 @@ class LiveScreen: UIViewController, UITextFieldDelegate{
     var team4 = 0
     var started = true
   
- 
+
    
     @IBOutlet weak var word: UILabel! //display the word
     @IBOutlet weak var countDown: UILabel! //countdown label
@@ -56,17 +64,32 @@ class LiveScreen: UIViewController, UITextFieldDelegate{
         gotItLabel.isHidden = true
         
         if teamTracker == 1 {
-            view.backgroundColor = .lightGray
+            view.backgroundColor = UIColor(red:0.79, green:0.12, blue:0.22, alpha:1.0) //foreign crimson C91F37
         } else {
-            view.backgroundColor = .brown
+            view.backgroundColor = UIColor(red:0.10, green:0.71, blue:1.00, alpha:1.0)// #19B5FE dodger blue
         }
+
+        let url = Bundle.main.url(forResource: "beep", withExtension: "mp3")
+        let url2 = Bundle.main.url(forResource: "end", withExtension: "mp3")
+        
+        do {
+            beepSound = try AVAudioPlayer(contentsOf: url!)
+            beepSound.enableRate = true
+            beepSound.prepareToPlay()
+            
+            endSound = try AVAudioPlayer(contentsOf: url2!)
+            endSound.prepareToPlay()
+            
+            
+        } catch let error as NSError {
+            print(error.debugDescription)
+        }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         countDown.text = String(gameSeconds)
-       // save.set(resetTimer,forKey: "resetTimer")
-        //seconds = save.integer(forKey: "resetTimer")
        
     }
     
@@ -101,7 +124,6 @@ class LiveScreen: UIViewController, UITextFieldDelegate{
     }
     
     @IBAction func buttonTapped(_ sender: Any) { //start button
-        
         gotItLabel.isHidden = false
         buttonTappedLabel.isHidden = true
         if shuffledArray.count == 1 { //hides the skip when there is one word left
@@ -110,6 +132,9 @@ class LiveScreen: UIViewController, UITextFieldDelegate{
         }
         word.isHidden = false
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(LiveScreen.counter), userInfo: nil, repeats: true)
+        timerForSound = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(LiveScreen.playSound), userInfo: nil, repeats: true)
+        timerForSound2 = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(LiveScreen.playSound), userInfo: nil, repeats: true)
+        timerForSound3 = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(LiveScreen.playSound), userInfo: nil, repeats: true)
         print(shuffledArray)
         if shuffledArray.isEmpty == false {
             
@@ -134,7 +159,7 @@ class LiveScreen: UIViewController, UITextFieldDelegate{
         }
         
         if shuffledArray.count > 1 { //removes the current word and goes to the next one. Cycles through the whole deck
-            if let index = shuffledArray.index(of: word.text!) { //TESTING
+            if let index = shuffledArray.index(of: word.text!) {
                 shuffledArray.remove(at: index)
                 nextElement()
             }
@@ -148,10 +173,34 @@ class LiveScreen: UIViewController, UITextFieldDelegate{
 
 }
     
+   @objc func playSound() {
+        
+        if gameSeconds > 30 { //play sounds at different rates
+            beepSound.rate = 0.5
+            beepSound.play()
+            print("normal \(gameSeconds)")
+            
+        } else if gameSeconds > 15  { //15
+            beepSound.rate = 1
+            beepSound.play()
+            print("faster \(gameSeconds)")
+        } else if gameSeconds >  1 {  //15
+            beepSound.rate = 2
+            beepSound.play()
+            print("fastest \(gameSeconds)")
+            
+        } else if gameSeconds > 0 {
+            beepSound.stop()
+            endSound.play()
+            print("buzzer \(gameSeconds)")
+        }
+    }
+    
     func endTurn() { //things to do at the end
         arrayTest = shuffledArray
         switchTeam()
         performSegue(withIdentifier: "goBackMainMenu", sender: self)
+        beepSound.stop()
 
     }
     
@@ -159,10 +208,12 @@ class LiveScreen: UIViewController, UITextFieldDelegate{
     @objc func counter() {
         gameSeconds -= 1
         countDown.text = String(gameSeconds)
+    
         
         if (gameSeconds <= 0) {
             timer.invalidate()
              endTurn()
+           
     }
 }
     
@@ -177,8 +228,13 @@ class LiveScreen: UIViewController, UITextFieldDelegate{
             destination.team2 = team4
             destination.started = started
             destination.roundTracker = roundTracker
+            timer.invalidate() //stop timer when screen moves back to Main menu
+                 timerForSound.invalidate()
+                 timerForSound2.invalidate()
+                 timerForSound3.invalidate()
+            
     
-            print("gameSecondis \(gameSeconds)")
+            print("gameSecond is \(gameSeconds)")
             print("seconds is \(seconds)")
         
     }
