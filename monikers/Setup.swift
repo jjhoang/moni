@@ -59,6 +59,7 @@ class Setup: UIViewController, UITextFieldDelegate {
         playerSliderLabel.value = roundf(playerSliderLabel.value)
         playerLabel.text = String(Int(playerSliderLabel.value)) + " players"
         numberOfPlayers = Int(playerSliderLabel.value)
+        print("current number of players is \(numberOfPlayers)")
     }
     
     

@@ -135,6 +135,7 @@ class MainMenu: UIViewController, UITextFieldDelegate {
             destination.team4 = team2
             destination.roundTracker = roundTracker
             destination.gameSeconds = seconds
+        
   
             
         }

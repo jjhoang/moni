@@ -36,6 +36,7 @@ class LiveScreen: UIViewController, UITextFieldDelegate{
   
 
    
+    @IBOutlet weak var currentRoundLabel: UILabel!
     @IBOutlet weak var word: UILabel! //display the word
     @IBOutlet weak var countDown: UILabel! //countdown label
     @IBOutlet weak var buttonTappedLabel: UIButton! //enter label
@@ -90,7 +91,22 @@ class LiveScreen: UIViewController, UITextFieldDelegate{
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         countDown.text = String(gameSeconds)
+        currentRound()
        
+    }
+    
+    func currentRound() {
+       
+        switch roundTracker {
+        case 1:
+            currentRoundLabel.text = "SAY ANYTHING"
+        case 2:
+            currentRoundLabel.text = "ONE WORD ONLY"
+        case 3:
+            currentRoundLabel.text = "ACT OUT"
+        default:
+            currentRoundLabel.text = "GAME OVER"
+        }
     }
     
   

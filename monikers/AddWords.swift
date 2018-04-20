@@ -36,11 +36,10 @@ class AddWords: UIViewController, UITextFieldDelegate  {
         configureTextFields()
         configureTapGesture()
         //make sure the numberOfPlayers isn't 0
-        numberOfPlayers = 2
         nextButtonLabel.isHidden = true
         alert.isHidden = true
         view.backgroundColor = UIColor(red:0.21, green:0.84, blue:0.72, alpha:1.0) //turquoise# 36D7B7
-        nextButtonLabel.backgroundColor = .black
+       // nextButtonLabel.backgroundColor = .black
         //capture the endpoint for nextbutton label
         nextEndpoint.center = nextButtonLabel.center
      
@@ -62,12 +61,14 @@ class AddWords: UIViewController, UITextFieldDelegate  {
         //shuffle the miss cards
         let shuffledRemainder = shuffleArray(arrayToBeShuffled: remainderDeck)
         //add the shuffledremainder deck to the array to Add
+        if numberOfCardsLeft != 0 {
         for card in 1...numberOfCardsLeft {
             addedWords += 1
              wordCount.text = String(addedWords)
              //add the content to the actual deck
             liveWords.append(String(describing: shuffledRemainder[card]))
             originalWords1.append(String(describing: shuffledRemainder[card]))
+        }
         }
     
         print("Remainder: \(numberOfCardsLeft)")
@@ -97,6 +98,7 @@ class AddWords: UIViewController, UITextFieldDelegate  {
         print("words are currently \(originalWords1)")
         print("\(deckSize)")
         print("number of players: \(numberOfPlayers)")
+        print("number of cards per person \(cardsPerPerson)")
         
     }
     
@@ -123,7 +125,7 @@ class AddWords: UIViewController, UITextFieldDelegate  {
             } else {
                 addedWords += 1 // updates counter
                 
-                if personalCardNumber == 1 {
+                if personalCardNumber == 1 && addedWords != deckSize {
                     
                     personalCardNumber = cardsPerPerson
                     addThisMany.text = String("ADD \(personalCardNumber) MORE")
