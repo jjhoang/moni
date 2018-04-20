@@ -25,6 +25,8 @@ class MainMenu: UIViewController, UITextFieldDelegate {
     print("round is currently \(roundTracker)")
     print("LiveWords is currently \(liveWords)")
     print("OriginalWords1 is currently \(originalWords1)")
+        print("team 1 score: \(team1)")
+           print("team 1 score: \(team2)")
     }
     
     
@@ -48,8 +50,9 @@ class MainMenu: UIViewController, UITextFieldDelegate {
 }
     
    override func viewWillAppear(_ animated: Bool) {
-        newRoundStart()
-        scoreUpdate()
+     scoreUpdate()
+    newRoundStart()
+    
     if started == true { //when the game starts
         round.isHidden = false
         wordsLeft.text = String(liveWords.count) //shows # remaining words
@@ -103,14 +106,26 @@ class MainMenu: UIViewController, UITextFieldDelegate {
              round.text = "Round 3: Charades"
              startButtonLabel.isHidden = false
         } else if roundTracker == 4 {
-            round.text = "GAME OVER"
-            originalWords1 = []
-            startButtonLabel.isHidden = true
-            wordsLeft.isHidden = true
-            numberOfWordsLabel.isHidden = true
-            print("GAME OVER")
+           gameOver()
         }
       
+    }
+    
+    func gameOver() {
+        if team1 > team2 {
+            round.text = "TEAM 1 WINS"
+        } else if team1 < team2  {
+              round.text = "TEAM 2 WINS"
+        } else if team1 == team2 {
+             round.text = "TIE GAME"
+        }
+            
+      
+        originalWords1 = []
+        startButtonLabel.isHidden = true
+        wordsLeft.isHidden = true
+        numberOfWordsLabel.isHidden = true
+        print("GAME OVER")
     }
     
     func newGame() {
