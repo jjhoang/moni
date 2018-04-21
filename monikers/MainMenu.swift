@@ -26,7 +26,7 @@ class MainMenu: UIViewController, UITextFieldDelegate {
     print("LiveWords is currently \(liveWords)")
     print("OriginalWords1 is currently \(originalWords1)")
         print("team 1 score: \(team1)")
-           print("team 1 score: \(team2)")
+        print("team 1 score: \(team2)")
     }
     
     

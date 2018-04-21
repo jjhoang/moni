@@ -20,7 +20,7 @@ class Setup: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var deckSliderLabel: UISlider!
     var deckSliderValue = 0
     var timeCounter = 0
-    var numberOfPlayers = 0
+    var numberOfPlayers = 11
     
 
     
