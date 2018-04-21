@@ -121,9 +121,9 @@ class AddWords: UIViewController, UITextFieldDelegate  {
         //checks to see if the string is empty or has whitespaces and the added words is teh same as the determine deck size
         if (textField.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)! == false &&
             addedWords < deckSize &&
-            checkForDuplicate() == false { 
+            checkForDuplicate() == false {
             
-           addedWords += 1 // updates counter
+           addedWords += 1 // updates counter number
                 
                 if personalCardNumber == 1 && addedWords != deckSize {
                     
