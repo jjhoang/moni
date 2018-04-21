@@ -20,7 +20,7 @@ class Setup: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var deckSliderLabel: UISlider!
     var deckSliderValue = 0
     var timeCounter = 0
-    var numberOfPlayers = 0
+    var numberOfPlayers = 11
     
 
     
@@ -59,6 +59,7 @@ class Setup: UIViewController, UITextFieldDelegate {
         playerSliderLabel.value = roundf(playerSliderLabel.value)
         playerLabel.text = String(Int(playerSliderLabel.value)) + " players"
         numberOfPlayers = Int(playerSliderLabel.value)
+        print("current number of players is \(numberOfPlayers)")
     }
     
     

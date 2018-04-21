@@ -27,20 +27,18 @@ class AddWords: UIViewController, UITextFieldDelegate  {
     @IBOutlet weak var nextButtonLabel: UIButton!
     @IBOutlet weak var addThisMany: UILabel!
     var deckSize = 35
-    var testing: Set = [""]
     var numberOfPlayers = 2
     var personalCardNumber = 0
     var cardsPerPerson = 1
+    var duplicateArray = [""]
 
     override func viewDidLoad() {
         configureTextFields()
         configureTapGesture()
-        //make sure the numberOfPlayers isn't 0
-        numberOfPlayers = 2
         nextButtonLabel.isHidden = true
         alert.isHidden = true
         view.backgroundColor = UIColor(red:0.21, green:0.84, blue:0.72, alpha:1.0) //turquoise# 36D7B7
-        nextButtonLabel.backgroundColor = .black
+       // nextButtonLabel.backgroundColor = .black
         //capture the endpoint for nextbutton label
         nextEndpoint.center = nextButtonLabel.center
      
@@ -50,6 +48,7 @@ class AddWords: UIViewController, UITextFieldDelegate  {
     override func viewWillAppear(_ animated: Bool) {
     
         //determine how many cards each player adds
+        print("decksize = \(deckSize) and # of players is \(numberOfPlayers)")
         cardsPerPerson = (deckSize / numberOfPlayers)
         
         //add this amount of cards into the deck
@@ -62,12 +61,15 @@ class AddWords: UIViewController, UITextFieldDelegate  {
         //shuffle the miss cards
         let shuffledRemainder = shuffleArray(arrayToBeShuffled: remainderDeck)
         //add the shuffledremainder deck to the array to Add
+        if numberOfCardsLeft != 0 {
         for card in 1...numberOfCardsLeft {
             addedWords += 1
              wordCount.text = String(addedWords)
              //add the content to the actual deck
             liveWords.append(String(describing: shuffledRemainder[card]))
             originalWords1.append(String(describing: shuffledRemainder[card]))
+            duplicateArray.append(shuffledRemainder[card].uppercased().replacingOccurrences(of: " ", with: ""))
+        }
         }
     
         print("Remainder: \(numberOfCardsLeft)")
@@ -97,6 +99,8 @@ class AddWords: UIViewController, UITextFieldDelegate  {
         print("words are currently \(originalWords1)")
         print("\(deckSize)")
         print("number of players: \(numberOfPlayers)")
+        print("number of cards per person \(cardsPerPerson)")
+        
         
     }
     
@@ -113,17 +117,15 @@ class AddWords: UIViewController, UITextFieldDelegate  {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         
-        if (textField.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)! == false && addedWords < deckSize { //checks to see if the string is empty or has whitespaces and the added words is teh same as the determine deck size
+        checkForDuplicate()
+        //checks to see if the string is empty or has whitespaces and the added words is teh same as the determine deck size
+        if (textField.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)! == false &&
+            addedWords < deckSize &&
+            checkForDuplicate() == false {
             
-            if originalWords1.contains(textField.text!){ //checks for EXACT duplicates -- need to improve
-                print("Word not added -- Duplicate")
-                alert.isHidden = false
-                alert.text = "DUPLICATE WORD!"
+           addedWords += 1 // updates counter number
                 
-            } else {
-                addedWords += 1 // updates counter
-                
-                if personalCardNumber == 1 {
+                if personalCardNumber == 1 && addedWords != deckSize {
                     
                     personalCardNumber = cardsPerPerson
                     addThisMany.text = String("ADD \(personalCardNumber) MORE")
@@ -136,10 +138,13 @@ class AddWords: UIViewController, UITextFieldDelegate  {
                 liveWords.append(addWords.text!) // add words to everyWord array]
                 originalWords1.append(addWords.text!) //add words to originalWords array
                 alert.isHidden = true
+            //to check duplicate words
+               let testedWord = textField.text?.uppercased().replacingOccurrences(of: " ", with: "")
+               duplicateArray.append(testedWord!)
+               print(testedWord!)
+               print("duplicate array contains \(duplicateArray)")
               
-            }
-
-        } else {
+    } else {
         return
     }
         if addedWords == deckSize {
@@ -154,7 +159,18 @@ class AddWords: UIViewController, UITextFieldDelegate  {
             alert.text = "Deck Complete!"
         }
     }
-
+    
+  @discardableResult func checkForDuplicate() -> Bool {
+        let testedWord = textField.text?.uppercased().replacingOccurrences(of: " ", with: "")
+        if duplicateArray.contains(testedWord!) && (textField.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)! == false {
+            print("this is a duplicate do not add")
+            alert.isHidden = false
+            alert.text = "DUPLICATE WORD!"
+            return true
+        } else {
+        return false
+    }
+    }
     func notifyPlayer(title: String, message: String){
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
         

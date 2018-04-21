@@ -21,8 +21,8 @@ class LiveScreen: UIViewController, UITextFieldDelegate{
     var numberOfWords = 0
     var timer = Timer()
     var timerForSound = Timer()
-     var timerForSound2 = Timer()
-     var timerForSound3 = Timer()
+    var timerForSound2 = Timer()
+    var timerForSound3 = Timer()
     var liveScreenWords: String?
     var arrayTest: [String] = [ ]
     var shuffledArray: [String] = [ ]
@@ -36,6 +36,7 @@ class LiveScreen: UIViewController, UITextFieldDelegate{
   
 
    
+    @IBOutlet weak var currentRoundLabel: UILabel! //display current round
     @IBOutlet weak var word: UILabel! //display the word
     @IBOutlet weak var countDown: UILabel! //countdown label
     @IBOutlet weak var buttonTappedLabel: UIButton! //enter label
@@ -76,7 +77,6 @@ class LiveScreen: UIViewController, UITextFieldDelegate{
             beepSound = try AVAudioPlayer(contentsOf: url!)
             beepSound.enableRate = true
             beepSound.prepareToPlay()
-            
             endSound = try AVAudioPlayer(contentsOf: url2!)
             endSound.prepareToPlay()
             
@@ -90,7 +90,22 @@ class LiveScreen: UIViewController, UITextFieldDelegate{
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         countDown.text = String(gameSeconds)
+        currentRound()
        
+    }
+    
+    func currentRound() {
+       
+        switch roundTracker {
+        case 1:
+            currentRoundLabel.text = "SAY ANYTHING"
+        case 2:
+            currentRoundLabel.text = "ONE WORD ONLY"
+        case 3:
+            currentRoundLabel.text = "ACT OUT"
+        default:
+            currentRoundLabel.text = "GAME OVER"
+        }
     }
     
   
