@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		0D02215620575A4E007AAEA2 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D02215520575A4E007AAEA2 /* MainMenu.swift */; };
 		0D2831DD2075CB21007565EF /* beep.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0D2831DC2075CB21007565EF /* beep.mp3 */; };
+		0D4E28E52092B7DA00428A01 /* RuleSlide.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D4E28E42092B7DA00428A01 /* RuleSlide.xib */; };
+		0D4E28E72092B85D00428A01 /* RuleSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4E28E62092B85D00428A01 /* RuleSlide.swift */; };
+		0D4E28E92092BA9400428A01 /* Rules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D4E28E82092BA9400428A01 /* Rules.swift */; };
 		0D7EE0D32073227E00B949AA /* MaxLength.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7EE0D22073227E00B949AA /* MaxLength.swift */; };
 		0D934DA42075D7A10030AABD /* end.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0D934DA32075D7A10030AABD /* end.mp3 */; };
 		0D934DA62076E4F80030AABD /* TitlePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D934DA52076E4F80030AABD /* TitlePage.swift */; };
@@ -24,6 +27,9 @@
 /* Begin PBXFileReference section */
 		0D02215520575A4E007AAEA2 /* MainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
 		0D2831DC2075CB21007565EF /* beep.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = beep.mp3; sourceTree = "<group>"; };
+		0D4E28E42092B7DA00428A01 /* RuleSlide.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RuleSlide.xib; sourceTree = "<group>"; };
+		0D4E28E62092B85D00428A01 /* RuleSlide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuleSlide.swift; sourceTree = "<group>"; };
+		0D4E28E82092BA9400428A01 /* Rules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rules.swift; sourceTree = "<group>"; };
 		0D7EE0D22073227E00B949AA /* MaxLength.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaxLength.swift; sourceTree = "<group>"; };
 		0D934DA32075D7A10030AABD /* end.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = end.mp3; sourceTree = "<group>"; };
 		0D934DA52076E4F80030AABD /* TitlePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitlePage.swift; sourceTree = "<group>"; };
@@ -58,6 +64,16 @@
 			path = Sound;
 			sourceTree = "<group>";
 		};
+		0D4E28E32092B72500428A01 /* Rules */ = {
+			isa = PBXGroup;
+			children = (
+				0D4E28E82092BA9400428A01 /* Rules.swift */,
+				0D4E28E42092B7DA00428A01 /* RuleSlide.xib */,
+				0D4E28E62092B85D00428A01 /* RuleSlide.swift */,
+			);
+			path = Rules;
+			sourceTree = "<group>";
+		};
 		0DE861B9204F915C00B070C5 = {
 			isa = PBXGroup;
 			children = (
@@ -79,6 +95,7 @@
 			children = (
 				0DE861C5204F915C00B070C5 /* AppDelegate.swift */,
 				0D934DA52076E4F80030AABD /* TitlePage.swift */,
+				0D4E28E32092B72500428A01 /* Rules */,
 				0DCB4BF320705503002EDA82 /* Setup.swift */,
 				0DE7CA6B206D529F0037E57B /* AddWords.swift */,
 				0D02215520575A4E007AAEA2 /* MainMenu.swift */,
@@ -155,6 +172,7 @@
 				0DE861D0204F915C00B070C5 /* LaunchScreen.storyboard in Resources */,
 				0D2831DD2075CB21007565EF /* beep.mp3 in Resources */,
 				0D934DA42075D7A10030AABD /* end.mp3 in Resources */,
+				0D4E28E52092B7DA00428A01 /* RuleSlide.xib in Resources */,
 				0DE861CD204F915C00B070C5 /* Assets.xcassets in Resources */,
 				0DE861CB204F915C00B070C5 /* Main.storyboard in Resources */,
 			);
@@ -169,7 +187,9 @@
 			files = (
 				0D7EE0D32073227E00B949AA /* MaxLength.swift in Sources */,
 				0DE861C8204F915C00B070C5 /* LiveScreen.swift in Sources */,
+				0D4E28E92092BA9400428A01 /* Rules.swift in Sources */,
 				0DE7CA6C206D529F0037E57B /* AddWords.swift in Sources */,
+				0D4E28E72092B85D00428A01 /* RuleSlide.swift in Sources */,
 				0D02215620575A4E007AAEA2 /* MainMenu.swift in Sources */,
 				0DCB4BF420705503002EDA82 /* Setup.swift in Sources */,
 				0DE861C6204F915C00B070C5 /* AppDelegate.swift in Sources */,
