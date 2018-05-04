@@ -16,9 +16,9 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P4E-iM-vKB" userLabel="textView">
-                    <rect key="frame" x="67" y="280" width="240" height="107"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P4E-iM-vKB" userLabel="textView">
+                    <rect key="frame" x="50" y="70" width="275" height="447"/>
+                    <color key="backgroundColor" red="0.0014006179990246892" green="0.56849950551986694" blue="0.57615357637405396" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -26,10 +26,10 @@
             </subviews>
             <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="P4E-iM-vKB" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="67" id="4bJ-Ag-hoV"/>
-                <constraint firstItem="P4E-iM-vKB" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="260" id="Svw-60-pXj"/>
-                <constraint firstItem="P4E-iM-vKB" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="TFv-1Y-Xsh"/>
-                <constraint firstItem="P4E-iM-vKB" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="WvP-aw-aTi"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="P4E-iM-vKB" secondAttribute="bottom" constant="150" id="3zY-zo-Zyk"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="P4E-iM-vKB" secondAttribute="trailing" constant="50" id="8Dh-hB-zt6"/>
+                <constraint firstItem="P4E-iM-vKB" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="50" id="pVr-d0-81q"/>
+                <constraint firstItem="P4E-iM-vKB" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="50" id="vMW-jR-4oJ"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>

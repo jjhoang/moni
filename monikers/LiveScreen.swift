@@ -212,6 +212,10 @@ class LiveScreen: UIViewController, UITextFieldDelegate{
     }
     
     func endTurn() { //things to do at the end
+        if roundTracker == 4 && numberOfWords == 0 {
+            performSegue(withIdentifier: "endGame", sender: self)
+            beepSound.stop()
+        }
         arrayTest = shuffledArray
         switchTeam()
         performSegue(withIdentifier: "goBackMainMenu", sender: self)
