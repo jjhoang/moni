@@ -12,6 +12,7 @@ var seconds = 45 //default if slider doesn't change
 class Setup: UIViewController, UITextFieldDelegate {
     
 
+    @IBOutlet weak var totalDeckSizeLabel: UILabel!
     @IBOutlet weak var playerSliderLabel: UISlider!
     @IBOutlet weak var playerLabel: UILabel!
     @IBOutlet weak var secondsLabel: UILabel!
@@ -36,7 +37,8 @@ class Setup: UIViewController, UITextFieldDelegate {
     }
     @IBAction func deckSlider(_ sender: UISlider){
       deckSliderLabel.value = roundf(deckSliderLabel.value) //changes slider from a float to an int
-      deckCount.text = String(Int(sender.value * 5 + 15)) + " words" //displays 20-50 int
+      deckCount.text = String(Int(sender.value)) + " words per player" //displays 20-50 int
+     totalDeckSizeLabel.text = String(deckSliderLabel.value * playerSliderLabel.value)
     }
     @IBAction func timeSlider(_ sender: UISlider) {
     timeSliderLabel.value = roundf(timeSliderLabel.value)//changes slider from a float to an int
@@ -60,6 +62,7 @@ class Setup: UIViewController, UITextFieldDelegate {
         playerLabel.text = String(Int(playerSliderLabel.value)) + " players"
         numberOfPlayers = Int(playerSliderLabel.value)
         print("current number of players is \(numberOfPlayers)")
+        totalDeckSizeLabel.text = String(deckSliderLabel.value * playerSliderLabel.value)
     }
     
     
@@ -69,7 +72,7 @@ class Setup: UIViewController, UITextFieldDelegate {
     
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let deckSize = Int(deckSliderLabel.value) * 5 + 15
+        let deckSize = Int(deckSliderLabel.value * playerSliderLabel.value)
         //original value is from 1-7 and * 5 + 15 will get to the desired deck size of 20-50
         if let destination = segue.destination as? AddWords {
             destination.deckSize = deckSize

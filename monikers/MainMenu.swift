@@ -150,16 +150,23 @@ class MainMenu: UIViewController, UITextFieldDelegate {
             destination.team4 = team2
             destination.roundTracker = roundTracker
             destination.gameSeconds = seconds
-        
-  
             
+          /*  if let otherDestination = segue.destination as? GameOver {
+             otherDestination.
+            } */
+    
         }
-    }
+  
 }
 
+}
+/*
+protocol testing: UIGestureRecognizer {
+    
 
+}
 
-
+*/
     
 
 

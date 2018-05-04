@@ -56,7 +56,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9v0-Qq-zko">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9v0-Qq-zko">
                                 <rect key="frame" x="27" y="195" width="343" height="240"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <attributedString key="attributedText">
@@ -121,7 +121,7 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <viewLayoutGuide key="safeArea" id="7Hj-0a-1vn"/>
                     </view>
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
@@ -134,31 +134,28 @@
                         <outlet property="word" destination="9v0-Qq-zko" id="JhM-Sv-3OL"/>
                         <outlet property="wordsLeft" destination="Eaa-Pa-fY0" id="Gx3-e0-JPe"/>
                         <segue destination="okr-N5-JAw" kind="show" identifier="goBackMainMenu" id="MC5-kF-zRo"/>
+                        <segue destination="Mnk-Gj-rbR" kind="show" identifier="endGame" id="Sa4-vm-W6Q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2332" y="-67.016491754122939"/>
         </scene>
-        <!--View Controller-->
+        <!--Game Over-->
         <scene sceneID="eQd-cY-Viw">
             <objects>
-                <viewController id="Mnk-Gj-rbR" sceneMemberID="viewController">
+                <viewController id="Mnk-Gj-rbR" customClass="GameOver" customModule="monikers" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oJ0-aX-PAe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="GAME OVER" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bzs-9Y-YC3">
-                                <rect key="frame" x="93" y="53" width="188" height="41"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="34"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k7j-xq-b2i">
-                                <rect key="frame" x="149" y="586" width="76" height="30"/>
+                                <rect key="frame" x="143" y="495" width="76" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Main Menu"/>
+                                <state key="normal" title="Restart"/>
+                                <connections>
+                                    <segue destination="fku-Vh-Uqb" kind="show" id="jWb-LT-Yte"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Round 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dMZ-Ld-CkN">
                                 <rect key="frame" x="77" y="333" width="62" height="21"/>
@@ -258,9 +255,16 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="GAME OVER" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bzs-9Y-YC3">
+                                <rect key="frame" x="93" y="87" width="188" height="41"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="34"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <viewLayoutGuide key="safeArea" id="VXZ-re-Ne8"/>
+                        <viewLayoutGuide key="safeArea" id="6kp-df-CHN"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x50-DM-rtF" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -276,7 +280,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="200" translatesAutoresizingMaskIntoConstraints="NO" id="1Ab-jy-Zkl">
-                                <rect key="frame" x="47" y="130" width="281.5" height="427.5"/>
+                                <rect key="frame" x="47" y="120" width="281.5" height="427.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="clip" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="E9P-f6-fxo">
                                         <rect key="frame" x="0.0" y="0.0" width="281.5" height="86.5"/>
@@ -325,77 +329,52 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="1Ab-jy-Zkl" firstAttribute="centerY" secondItem="wNg-EA-aHd" secondAttribute="centerY" id="hRC-3K-b4f"/>
-                            <constraint firstItem="1Ab-jy-Zkl" firstAttribute="centerX" secondItem="wNg-EA-aHd" secondAttribute="centerX" id="k2Z-QV-AxJ"/>
+                            <constraint firstItem="1Ab-jy-Zkl" firstAttribute="centerY" secondItem="JYx-Fp-OfH" secondAttribute="centerY" id="hRC-3K-b4f"/>
+                            <constraint firstItem="1Ab-jy-Zkl" firstAttribute="centerX" secondItem="AZk-EK-zkS" secondAttribute="centerX" id="k2Z-QV-AxJ"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="wNg-EA-aHd"/>
+                        <viewLayoutGuide key="safeArea" id="AZk-EK-zkS"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kcf-u6-WsG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3239.84375" y="-67.96875"/>
+            <point key="canvasLocation" x="-3189" y="-235"/>
         </scene>
-        <!--View Controller-->
+        <!--Rules-->
         <scene sceneID="R2N-R5-HCW">
             <objects>
-                <viewController id="iM3-Pl-jK7" sceneMemberID="viewController">
+                <viewController id="iM3-Pl-jK7" customClass="Rules" customModule="monikers" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="m7n-r1-l6I">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="RULES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Ac-B3-prb">
-                                <rect key="frame" x="161" y="40" width="53" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Me1-1h-U44">
-                                <rect key="frame" x="24" y="20" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="&lt;"/>
-                            </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="mg9-VF-6w0">
-                                <rect key="frame" x="67" y="69" width="240" height="835"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <mutableString key="text">3 Rounds:
-
-Setup:
-
-	1) Select the amount of players when you start a new game then divide everyone up into 2 different teams
-	2) Choose deck size (the more words, the longer the game)
-	3) Set the timer (we recommend less time for a large group)
-	4) Depending on the amount of words and players, everyone will get to add a certain amount of words to the deck.  Some extra words may be added to ensure that everyone enters the same amount of words.
-	5) Once everyone enters in their words, team 1 will begin.  Team 2 will begin after the timer gets to 0. 
-
-There will be 3 rounds:
-
-Round 1: 
-
-	Say anything, but the word that is being displayed
-
-Round 2:
-	
-	One word only.  You can repeat the word as many times as you want, but you can only use one word as a clue for that particular word.
-
-Round 3:
-	
-	Act it out. No words, only charades. 
-
-Team with the most points at the end of the third round wins the game!
-</mutableString>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="1f4-DP-Fia">
+                                <rect key="frame" x="80" y="530" width="215" height="37"/>
+                            </pageControl>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iw3-u6-esc">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <viewLayoutGuide key="safeArea" id="QKb-Gh-CRe"/>
+                        <constraints>
+                            <constraint firstItem="Iw3-u6-esc" firstAttribute="top" secondItem="m7n-r1-l6I" secondAttribute="top" id="ANJ-Tq-Zgk"/>
+                            <constraint firstItem="Iw3-u6-esc" firstAttribute="trailing" secondItem="evm-kS-mBh" secondAttribute="trailing" id="BDs-Rg-Z70"/>
+                            <constraint firstItem="Iw3-u6-esc" firstAttribute="leading" secondItem="evm-kS-mBh" secondAttribute="leading" id="CNa-l5-ddr"/>
+                            <constraint firstItem="evm-kS-mBh" firstAttribute="trailing" secondItem="1f4-DP-Fia" secondAttribute="trailing" constant="80" id="UKT-FB-qx8"/>
+                            <constraint firstItem="Iw3-u6-esc" firstAttribute="bottom" secondItem="evm-kS-mBh" secondAttribute="bottom" id="e11-Yy-RL3"/>
+                            <constraint firstItem="1f4-DP-Fia" firstAttribute="leading" secondItem="evm-kS-mBh" secondAttribute="leading" constant="80" id="iRg-Dh-DRf"/>
+                            <constraint firstItem="evm-kS-mBh" firstAttribute="bottom" secondItem="1f4-DP-Fia" secondAttribute="bottom" constant="100" id="xQJ-YB-O8S"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="evm-kS-mBh"/>
                     </view>
+                    <connections>
+                        <outlet property="pageControl" destination="1f4-DP-Fia" id="8IU-RZ-UdT"/>
+                        <outlet property="slideScrollView" destination="Iw3-u6-esc" id="O3i-DX-U4B"/>
+                        <segue destination="fku-Vh-Uqb" kind="show" identifier="rulesToMainMenu" id="WJq-jU-Baw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZQE-Zu-2Rd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3240.8000000000002" y="585.1574212893554"/>
+            <point key="canvasLocation" x="-3770" y="810"/>
         </scene>
         <!--Setup-->
         <scene sceneID="Lgo-po-IqR">
@@ -414,75 +393,44 @@ Team with the most points at the end of the third round wins the game!
                                     <segue destination="fku-Vh-Uqb" kind="show" id="sDr-gR-vtF"/>
                                 </connections>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="bQz-rT-JlS">
-                                <rect key="frame" x="20" y="224" width="335" height="158"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="PdR-h7-XZu">
-                                        <rect key="frame" x="0.0" y="0.0" width="335" height="75"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="SELECT DECK SIZE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5i0-vo-UG3">
-                                                <rect key="frame" x="81" y="0.0" width="173.5" height="24"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="35 words" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n6M-tA-zug">
-                                                <rect key="frame" x="132" y="24" width="71.5" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="4" minValue="1" maxValue="7" translatesAutoresizingMaskIntoConstraints="NO" id="xw1-2h-hP5">
-                                                <rect key="frame" x="-2" y="44.5" width="339" height="31.5"/>
-                                                <connections>
-                                                    <action selector="deckSlider:" destination="0QY-pp-Xok" eventType="valueChanged" id="LAk-Mx-gcT"/>
-                                                </connections>
-                                            </slider>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstItem="xw1-2h-hP5" firstAttribute="leading" secondItem="PdR-h7-XZu" secondAttribute="leading" id="7QE-lZ-3ml"/>
-                                        </constraints>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="PxQ-cU-tiM">
-                                        <rect key="frame" x="0.0" y="84" width="335" height="74"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SET TIMER " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g2I-5H-wGz">
-                                                <rect key="frame" x="116.5" y="0.0" width="102.5" height="24"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="24" id="bl9-cu-i7U"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="45 seconds" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OrP-Ri-C63">
-                                                <rect key="frame" x="122.5" y="24" width="90" height="21"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="21" id="u3I-l1-iLB"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="2" minValue="1" maxValue="3" translatesAutoresizingMaskIntoConstraints="NO" id="PVS-Lv-Xfz">
-                                                <rect key="frame" x="-2" y="45" width="339" height="30"/>
-                                                <connections>
-                                                    <action selector="timeSlider:" destination="0QY-pp-Xok" eventType="valueChanged" id="To2-e0-qfF"/>
-                                                </connections>
-                                            </slider>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstItem="PVS-Lv-Xfz" firstAttribute="leading" secondItem="PxQ-cU-tiM" secondAttribute="leading" id="Lh9-n5-LMs"/>
-                                        </constraints>
-                                    </stackView>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="PdR-h7-XZu" firstAttribute="leading" secondItem="PxQ-cU-tiM" secondAttribute="leading" id="OGY-M7-BpK"/>
-                                    <constraint firstItem="PxQ-cU-tiM" firstAttribute="top" secondItem="bQz-rT-JlS" secondAttribute="top" constant="84" id="tKL-eZ-Z9j"/>
-                                </constraints>
-                            </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oxp-zS-z6E">
-                                <rect key="frame" x="141" y="559" width="93" height="57"/>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="1" maxValue="25" translatesAutoresizingMaskIntoConstraints="NO" id="xw1-2h-hP5">
+                                <rect key="frame" x="21" y="351" width="309" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="deckSlider:" destination="0QY-pp-Xok" eventType="valueChanged" id="LAk-Mx-gcT"/>
+                                </connections>
+                            </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" fixedFrame="YES" text="Words Per Player" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5i0-vo-UG3">
+                                <rect key="frame" x="117" y="279" width="147.5" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="45 seconds" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OrP-Ri-C63">
+                                <rect key="frame" x="142" y="435" width="90" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="2" minValue="1" maxValue="3" translatesAutoresizingMaskIntoConstraints="NO" id="PVS-Lv-Xfz">
+                                <rect key="frame" x="19" y="455" width="315" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="timeSlider:" destination="0QY-pp-Xok" eventType="valueChanged" id="To2-e0-qfF"/>
+                                </connections>
+                            </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SET TIMER " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g2I-5H-wGz">
+                                <rect key="frame" x="148" y="403" width="102.5" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oxp-zS-z6E">
+                                <rect key="frame" x="141" y="559.5" width="93" height="57"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="37"/>
                                 <state key="normal" title="NEXT">
                                     <color key="titleColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -492,21 +440,42 @@ Team with the most points at the end of the third round wins the game!
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Number of Players" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vdZ-Se-ig6">
-                                <rect key="frame" x="116" y="103" width="142" height="21"/>
+                                <rect key="frame" x="105" y="168" width="141.5" height="20.5"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="11" minValue="2" maxValue="20" translatesAutoresizingMaskIntoConstraints="NO" id="Ff2-V9-wNk">
-                                <rect key="frame" x="18" y="161" width="337" height="30"/>
+                                <rect key="frame" x="19" y="234" width="337" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <action selector="playerSlider:" destination="0QY-pp-Xok" eventType="valueChanged" id="h71-bN-WCK"/>
                                 </connections>
                             </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Deck Size:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ozu-qc-SNH">
+                                <rect key="frame" x="141" y="73" width="81" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9g8-2d-aw3">
+                                <rect key="frame" x="148" y="102" width="58" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="11 Players" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k6e-F3-57u">
-                                <rect key="frame" x="151" y="132" width="122" height="21"/>
+                                <rect key="frame" x="132" y="205" width="135" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="35 words" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n6M-tA-zug">
+                                <rect key="frame" x="117" y="322" width="164" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -514,16 +483,7 @@ Team with the most points at the end of the third round wins the game!
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="gKD-Eq-jyY" firstAttribute="bottom" secondItem="oxp-zS-z6E" secondAttribute="bottom" constant="51" id="Joh-bK-tVi"/>
-                            <constraint firstItem="oxp-zS-z6E" firstAttribute="leading" secondItem="gKD-Eq-jyY" secondAttribute="leading" constant="141" id="MLQ-8m-zZ6"/>
-                            <constraint firstAttribute="bottom" secondItem="bQz-rT-JlS" secondAttribute="bottom" constant="285" id="WVB-EP-qT4"/>
-                            <constraint firstItem="bQz-rT-JlS" firstAttribute="top" secondItem="eLh-b9-k1O" secondAttribute="top" constant="224" id="ZJc-1j-NdU"/>
-                            <constraint firstItem="gKD-Eq-jyY" firstAttribute="trailing" secondItem="oxp-zS-z6E" secondAttribute="trailing" constant="141" id="chN-S0-oSA"/>
-                            <constraint firstAttribute="trailing" secondItem="bQz-rT-JlS" secondAttribute="trailing" constant="20" symbolic="YES" id="gDi-qX-Ggi"/>
-                            <constraint firstItem="bQz-rT-JlS" firstAttribute="leading" secondItem="eLh-b9-k1O" secondAttribute="leading" constant="20" symbolic="YES" id="hec-wz-ZJK"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="gKD-Eq-jyY"/>
+                        <viewLayoutGuide key="safeArea" id="tqk-dv-2ST"/>
                     </view>
                     <connections>
                         <outlet property="deckCount" destination="n6M-tA-zug" id="UGg-7J-81w"/>
@@ -532,6 +492,7 @@ Team with the most points at the end of the third round wins the game!
                         <outlet property="playerSliderLabel" destination="Ff2-V9-wNk" id="80V-6N-6aQ"/>
                         <outlet property="secondsLabel" destination="OrP-Ri-C63" id="Oia-Pw-DbS"/>
                         <outlet property="timeSliderLabel" destination="PVS-Lv-Xfz" id="pEP-kN-ypM"/>
+                        <outlet property="totalDeckSizeLabel" destination="9g8-2d-aw3" id="Yjg-Xy-9Jo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cs9-k5-SG7" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -547,7 +508,7 @@ Team with the most points at the end of the third round wins the game!
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LDa-JA-A3O">
-                                <rect key="frame" x="39" y="399" width="320" height="132"/>
+                                <rect key="frame" x="39" y="438" width="320" height="132"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="45"/>
                                 <state key="normal" title="NEXT">
@@ -605,9 +566,23 @@ Team with the most points at the end of the third round wins the game!
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Enter Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4hL-8A-qHY">
+                                <rect key="frame" x="48" y="252" width="95" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9O4-YW-2fC">
+                                <rect key="frame" x="151" y="248" width="145" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                        <viewLayoutGuide key="safeArea" id="zFy-xf-RKv"/>
+                        <viewLayoutGuide key="safeArea" id="DXJ-Vu-hWg"/>
                     </view>
                     <connections>
                         <outlet property="addThisMany" destination="c7W-1w-pvT" id="IHm-dZ-FVH"/>
@@ -655,7 +630,7 @@ Team with the most points at the end of the third round wins the game!
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <viewLayoutGuide key="safeArea" id="lW7-O9-3Pq"/>
+                        <viewLayoutGuide key="safeArea" id="tV3-fJ-9mo"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ldy-sH-gI3" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -741,9 +716,23 @@ Team with the most points at the end of the third round wins the game!
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NOG-3R-jgq">
+                                <rect key="frame" x="32" y="192" width="97" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QUc-Rq-OlN">
+                                <rect key="frame" x="231" y="192" width="97" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <viewLayoutGuide key="safeArea" id="Z4M-pX-Hji"/>
+                        <viewLayoutGuide key="safeArea" id="yZM-o8-cFe"/>
                     </view>
                     <navigationItem key="navigationItem" id="eh5-eN-4C9"/>
                     <connections>
@@ -759,10 +748,10 @@ Team with the most points at the end of the third round wins the game!
             </objects>
             <point key="canvasLocation" x="936.79999999999995" y="-67.016491754122939"/>
         </scene>
-        <!--View Controller-->
+        <!--Testing-->
         <scene sceneID="p2j-MJ-SbP">
             <objects>
-                <viewController id="Jc8-gx-pjy" sceneMemberID="viewController">
+                <viewController id="Jc8-gx-pjy" customClass="Testing" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5Hf-EC-I2o">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -776,7 +765,7 @@ Team with the most points at the end of the third round wins the game!
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <viewLayoutGuide key="safeArea" id="wjn-aX-l4K"/>
+                        <viewLayoutGuide key="safeArea" id="4Co-Sf-YeZ"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Myb-kn-MnX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -787,5 +776,6 @@ Team with the most points at the end of the third round wins the game!
     <inferredMetricsTieBreakers>
         <segue reference="MC5-kF-zRo"/>
         <segue reference="GMl-cx-WS3"/>
+        <segue reference="sDr-gR-vtF"/>
     </inferredMetricsTieBreakers>
 </document>
